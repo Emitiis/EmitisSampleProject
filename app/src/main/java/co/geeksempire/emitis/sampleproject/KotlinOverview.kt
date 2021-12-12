@@ -8,16 +8,14 @@ class KotlinOverview {
     // + - / *
     var mathOperation: String = ""
 
-    var correctAnswer: Boolean = false
+    fun sumUpNumbers() : Int /* Return Result As A Number */ {
 
-    fun sumUpNumbers() {
-        println(firstNumber + secondNumber)
-
+        return (firstNumber + secondNumber)
     }
 
-    fun multiplyNumbers() {
-        println(firstNumber * secondNumber)
+    fun multiplyNumbers() : Int {
 
+        return (firstNumber * secondNumber)
     }
 
 }

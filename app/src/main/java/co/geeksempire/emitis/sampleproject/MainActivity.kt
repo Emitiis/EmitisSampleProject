@@ -14,13 +14,18 @@ class MainActivity : AppCompatActivity() {
         activityMainUiBinding = ActivityMainUiBinding.inflate(layoutInflater)
         setContentView(activityMainUiBinding.root)
 
-        activityMainUiBinding.colorfulTextView.setOnClickListener {
+        activityMainUiBinding.equalTextView.setOnClickListener {
+
+            var firstNumber = activityMainUiBinding.firstNumber.text.toString().toInt()
+            var secondNumber = activityMainUiBinding.secondNumber.text.toString().toInt()
+
+            activityMainUiBinding.resultTextView.setText((firstNumber + secondNumber).toString())
 
             //1 - Change Text Color
-            activityMainUiBinding.colorfulTextView.setTextColor(getColor(R.color.pink))
+            activityMainUiBinding.equalTextView.setTextColor(getColor(R.color.pink))
 
             //2 - Change Background Color
-            activityMainUiBinding.colorfulTextView.setBackgroundColor(getColor(android.R.color.holo_blue_light))
+            activityMainUiBinding.equalTextView.setBackgroundColor(getColor(android.R.color.holo_blue_light))
 
             //3 - Show A Toast Message
             Toast.makeText(applicationContext, getString(R.string.testId), Toast.LENGTH_LONG).show()
