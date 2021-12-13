@@ -76,7 +76,6 @@
         apps:layout_constraintBottom_toBottomOf="parent"
         apps:layout_constraintStart_toEndOf="@id/minusOperationButton" />
 
-
     <Button
         android:id="@+id/divideOperationButton"
         android:layout_width="50dp"
