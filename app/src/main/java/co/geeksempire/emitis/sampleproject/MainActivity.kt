@@ -59,7 +59,6 @@ class MainActivity : AppCompatActivity() {
                 Toast.makeText(applicationContext, "Hey Idiot Select A Operation", Toast.LENGTH_LONG).show()
 
                 ""
-
             }
 
             activityMainUiBinding.resultTextView.setText(result.toString())
