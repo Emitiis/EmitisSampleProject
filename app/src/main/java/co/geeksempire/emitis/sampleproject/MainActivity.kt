@@ -16,10 +16,14 @@ class MainActivity : AppCompatActivity() {
 
         activityMainUiBinding.equalTextView.setOnClickListener {
 
+            //Get First Number
             var firstNumber = activityMainUiBinding.firstNumber.text.toString().toInt()
+            //Get Second Number
             var secondNumber = activityMainUiBinding.secondNumber.text.toString().toInt()
 
-            activityMainUiBinding.resultTextView.setText((firstNumber + secondNumber).toString())
+            var result = (firstNumber + secondNumber).toString()
+
+            activityMainUiBinding.resultTextView.setText(result)
 
             //1 - Change Text Color
             activityMainUiBinding.equalTextView.setTextColor(getColor(R.color.pink))

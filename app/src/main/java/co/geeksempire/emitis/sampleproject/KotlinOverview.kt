@@ -8,11 +8,15 @@ class KotlinOverview {
     // + - / *
     var mathOperation: String = ""
 
+    // A Function To Sum Up Two Numbers
     fun sumUpNumbers() : Int /* Return Result As A Number */ {
 
-        return (firstNumber + secondNumber)
+        var result = (firstNumber + secondNumber)
+
+        return result
     }
 
+    // A Function To Multiply Two Numbers
     fun multiplyNumbers() : Int {
 
         return (firstNumber * secondNumber)
