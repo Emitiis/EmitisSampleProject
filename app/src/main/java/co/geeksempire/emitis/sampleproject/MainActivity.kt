@@ -20,9 +20,21 @@ class MainActivity : AppCompatActivity() {
         activityMainUiBinding.equalTextView.setOnClickListener {
 
             //Get First Number
-            var firstNumber = activityMainUiBinding.firstNumber.text.toString().toInt()
+            var firstNumber: Long = if (activityMainUiBinding.firstNumber.text.isNullOrBlank()) {
+                Toast.makeText(applicationContext, "Hey Idiot Add A Number", Toast.LENGTH_LONG).show()
+
+                0
+            } else {
+                activityMainUiBinding.firstNumber.text.toString().toLong()
+            }
             //Get Second Number
-            var secondNumber = activityMainUiBinding.secondNumber.text.toString().toInt()
+            var secondNumber: Long =  if (activityMainUiBinding.secondNumber.text.isNullOrBlank()) {
+                Toast.makeText(applicationContext, "Hey Idiot Add A Number", Toast.LENGTH_LONG).show()
+
+                0
+            } else {
+                activityMainUiBinding.secondNumber.text.toString().toLong()
+            }
 
             var result = if (mathOperation == "+") {
 
