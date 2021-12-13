@@ -7,6 +7,9 @@ import co.geeksempire.emitis.sampleproject.databinding.ActivityMainUiBinding
 
 class MainActivity : AppCompatActivity() {
 
+    // + - / *
+    var mathOperation: String = ""
+
     lateinit var activityMainUiBinding: ActivityMainUiBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,9 +24,33 @@ class MainActivity : AppCompatActivity() {
             //Get Second Number
             var secondNumber = activityMainUiBinding.secondNumber.text.toString().toInt()
 
-            var result = (firstNumber + secondNumber).toString()
+            var result = if (mathOperation == "+") {
 
-            activityMainUiBinding.resultTextView.setText(result)
+                (firstNumber + secondNumber)
+
+            } else if (mathOperation == "-") {
+
+                (firstNumber - secondNumber)
+
+
+            } else if (mathOperation == "*") {
+
+                (firstNumber * secondNumber)
+
+
+            } else if (mathOperation == "/") {
+
+                (firstNumber / secondNumber)
+
+            } else {
+
+                Toast.makeText(applicationContext, "Hey Idiot Select A Operation", Toast.LENGTH_LONG).show()
+
+                ""
+
+            }
+
+            activityMainUiBinding.resultTextView.setText(result.toString())
 
             //1 - Change Text Color
             activityMainUiBinding.equalTextView.setTextColor(getColor(R.color.pink))
@@ -33,6 +60,38 @@ class MainActivity : AppCompatActivity() {
 
             //3 - Show A Toast Message
             Toast.makeText(applicationContext, getString(R.string.testId), Toast.LENGTH_LONG).show()
+
+        }
+
+        activityMainUiBinding.sumOperationButton.setOnClickListener {
+
+            mathOperation = "+"
+
+            activityMainUiBinding.operationTextView.setText(mathOperation)
+
+        }
+
+        activityMainUiBinding.minusOperationButton.setOnClickListener {
+
+            mathOperation = "-"
+
+            activityMainUiBinding.operationTextView.setText(mathOperation)
+
+        }
+
+        activityMainUiBinding.multiplyOperationButton.setOnClickListener {
+
+            mathOperation = "*"
+
+            activityMainUiBinding.operationTextView.setText(mathOperation)
+
+        }
+
+        activityMainUiBinding.divideOperationButton.setOnClickListener {
+
+            mathOperation = "/"
+
+            activityMainUiBinding.operationTextView.setText(mathOperation)
 
         }
 

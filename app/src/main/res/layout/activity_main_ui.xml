@@ -53,6 +53,46 @@
         android:textSize="23sp"
 
         apps:layout_constraintBottom_toBottomOf="parent"
+        apps:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/minusOperationButton"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:text="-"
+        android:textSize="23sp"
+
+        apps:layout_constraintBottom_toBottomOf="parent"
+        apps:layout_constraintStart_toEndOf="@id/sumOperationButton" />
+
+    <Button
+        android:id="@+id/multiplyOperationButton"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:text="*"
+        android:textSize="23sp"
+
+        apps:layout_constraintBottom_toBottomOf="parent"
+        apps:layout_constraintStart_toEndOf="@id/minusOperationButton" />
+
+
+    <Button
+        android:id="@+id/divideOperationButton"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:text="/"
+        android:textSize="23sp"
+
+        apps:layout_constraintBottom_toBottomOf="parent"
+        apps:layout_constraintStart_toEndOf="@id/multiplyOperationButton" />
+
+    <TextView
+        android:id="@+id/operationTextView"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="173dp"
+
+        apps:layout_constraintTop_toTopOf="parent"
         apps:layout_constraintStart_toStartOf="parent"
         apps:layout_constraintEnd_toEndOf="parent"/>
 
@@ -62,7 +102,6 @@
         android:layout_height="100dp"
         android:textSize="51sp"
         android:textColor="@color/black"
-        android:text="10"
         android:gravity="center"
 
         apps:layout_constraintTop_toTopOf="parent"/>
