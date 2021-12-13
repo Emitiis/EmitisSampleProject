@@ -6,170 +6,105 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/equalTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="51dp"
+        android:paddingVertical="7dp"
+        android:layout_marginTop="239dp"
 
-    <TextView
-        android:id="@+id/geeksEmpire"
-        android:layout_width="199dp"
-        android:layout_height="299dp"
-        android:layout_marginStart="99dp"
-        android:layout_marginTop="53dp"
-        android:paddingStart="13dp"
-        android:paddingTop="53dp"
-        android:text="Geeks Empire"
-        android:textSize="51dp"
-        android:textColor="@color/white"
-        android:shadowColor="#8C000000"
-        android:shadowRadius="11"
-        android:shadowDx="13"
-        android:shadowDy="11"
-        android:background="@color/pink"
+        android:text="Equal"
+        android:textColor="@color/teal_200"
+        android:textSize="29sp"
+
+        apps:cornerRadius="51dp"
+        apps:rippleColor="@android:color/holo_blue_bright"
+
+        apps:layout_constraintWidth_percent="0.7"
+        apps:layout_constraintLeft_toLeftOf="parent"
+        apps:layout_constraintRight_toRightOf="parent"
+        apps:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/firstNumber"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="173dp"
+        android:inputType="number"
 
         apps:layout_constraintTop_toTopOf="parent"
         apps:layout_constraintStart_toStartOf="parent"/>
 
+    <EditText
+        android:id="@+id/secondNumber"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="173dp"
+        android:inputType="number"
+
+        apps:layout_constraintTop_toTopOf="parent"
+        apps:layout_constraintEnd_toEndOf="parent"/>
+
+    <Button
+        android:id="@+id/sumOperationButton"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:text="+"
+        android:textSize="23sp"
+
+        apps:layout_constraintBottom_toBottomOf="parent"
+        apps:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/minusOperationButton"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:text="-"
+        android:textSize="23sp"
+
+        apps:layout_constraintBottom_toBottomOf="parent"
+        apps:layout_constraintStart_toEndOf="@id/sumOperationButton" />
+
+    <Button
+        android:id="@+id/multiplyOperationButton"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:text="*"
+        android:textSize="23sp"
+
+        apps:layout_constraintBottom_toBottomOf="parent"
+        apps:layout_constraintStart_toEndOf="@id/minusOperationButton" />
+
+
+    <Button
+        android:id="@+id/divideOperationButton"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:text="/"
+        android:textSize="23sp"
+
+        apps:layout_constraintBottom_toBottomOf="parent"
+        apps:layout_constraintStart_toEndOf="@id/multiplyOperationButton" />
+
     <TextView
-        android:id="@+id/emi"
-        android:layout_width="0dp"
-        android:layout_height="299dp"
-        android:layout_marginTop="3dp"
-        android:paddingStart="13dp"
-        android:paddingTop="53dp"
-        android:text="Emi"
-        android:textSize="51dp"
-        android:textColor="@color/white"
-        android:shadowColor="#8C000000"
-        android:shadowRadius="11"
-        android:shadowDx="13"
-        android:shadowDy="11"
-        android:background="@color/pink"
+        android:id="@+id/operationTextView"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="173dp"
 
-        apps:layout_constraintWidth_percent="0.73"
-        apps:layout_constraintTop_toBottomOf="@id/geeksEmpire"
-        apps:layout_constraintStart_toStartOf="@id/geeksEmpire"/>
+        apps:layout_constraintTop_toTopOf="parent"
+        apps:layout_constraintStart_toStartOf="parent"
+        apps:layout_constraintEnd_toEndOf="parent"/>
 
+    <TextView
+        android:id="@+id/resultTextView"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:textSize="51sp"
+        android:textColor="@color/black"
+        android:gravity="center"
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!--    <com.google.android.material.button.MaterialButton-->
-<!--        android:id="@+id/equalTextView"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:paddingHorizontal="51dp"-->
-<!--        android:paddingVertical="7dp"-->
-<!--        android:layout_marginTop="239dp"-->
-
-<!--        android:text="Equal"-->
-<!--        android:textColor="@color/teal_200"-->
-<!--        android:textSize="29sp"-->
-
-<!--        apps:cornerRadius="51dp"-->
-<!--        apps:rippleColor="@android:color/holo_blue_bright"-->
-
-<!--        apps:layout_constraintLeft_toLeftOf="parent"-->
-<!--        apps:layout_constraintRight_toRightOf="parent"-->
-<!--        apps:layout_constraintTop_toTopOf="parent" />-->
-
-<!--    <EditText-->
-<!--        android:id="@+id/firstNumber"-->
-<!--        android:layout_width="100dp"-->
-<!--        android:layout_height="50dp"-->
-<!--        android:layout_marginTop="173dp"-->
-<!--        android:inputType="number"-->
-
-<!--        apps:layout_constraintTop_toTopOf="parent"-->
-<!--        apps:layout_constraintStart_toStartOf="parent"/>-->
-
-<!--    <EditText-->
-<!--        android:id="@+id/secondNumber"-->
-<!--        android:layout_width="100dp"-->
-<!--        android:layout_height="50dp"-->
-<!--        android:layout_marginTop="173dp"-->
-<!--        android:inputType="number"-->
-
-<!--        apps:layout_constraintTop_toTopOf="parent"-->
-<!--        apps:layout_constraintEnd_toEndOf="parent"/>-->
-
-<!--    <Button-->
-<!--        android:id="@+id/sumOperationButton"-->
-<!--        android:layout_width="50dp"-->
-<!--        android:layout_height="50dp"-->
-<!--        android:text="+"-->
-<!--        android:textSize="23sp"-->
-
-<!--        apps:layout_constraintBottom_toBottomOf="parent"-->
-<!--        apps:layout_constraintStart_toStartOf="parent" />-->
-
-<!--    <Button-->
-<!--        android:id="@+id/minusOperationButton"-->
-<!--        android:layout_width="50dp"-->
-<!--        android:layout_height="50dp"-->
-<!--        android:text="-"-->
-<!--        android:textSize="23sp"-->
-
-<!--        apps:layout_constraintBottom_toBottomOf="parent"-->
-<!--        apps:layout_constraintStart_toEndOf="@id/sumOperationButton" />-->
-
-<!--    <Button-->
-<!--        android:id="@+id/multiplyOperationButton"-->
-<!--        android:layout_width="50dp"-->
-<!--        android:layout_height="50dp"-->
-<!--        android:text="*"-->
-<!--        android:textSize="23sp"-->
-
-<!--        apps:layout_constraintBottom_toBottomOf="parent"-->
-<!--        apps:layout_constraintStart_toEndOf="@id/minusOperationButton" />-->
-
-
-<!--    <Button-->
-<!--        android:id="@+id/divideOperationButton"-->
-<!--        android:layout_width="50dp"-->
-<!--        android:layout_height="50dp"-->
-<!--        android:text="/"-->
-<!--        android:textSize="23sp"-->
-
-<!--        apps:layout_constraintBottom_toBottomOf="parent"-->
-<!--        apps:layout_constraintStart_toEndOf="@id/multiplyOperationButton" />-->
-
-<!--    <TextView-->
-<!--        android:id="@+id/operationTextView"-->
-<!--        android:layout_width="100dp"-->
-<!--        android:layout_height="50dp"-->
-<!--        android:layout_marginTop="173dp"-->
-
-<!--        apps:layout_constraintTop_toTopOf="parent"-->
-<!--        apps:layout_constraintStart_toStartOf="parent"-->
-<!--        apps:layout_constraintEnd_toEndOf="parent"/>-->
-
-<!--    <TextView-->
-<!--        android:id="@+id/resultTextView"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="100dp"-->
-<!--        android:textSize="51sp"-->
-<!--        android:textColor="@color/black"-->
-<!--        android:gravity="center"-->
-
-<!--        apps:layout_constraintTop_toTopOf="parent"/>-->
+        apps:layout_constraintTop_toTopOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
