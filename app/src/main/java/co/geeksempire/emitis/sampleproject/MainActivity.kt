@@ -10,6 +10,8 @@ class MainActivity : AppCompatActivity() {
     // + - / *
     var mathOperation: String = ""
 
+    var result: Long = 0
+
     lateinit var activityMainUiBinding: ActivityMainUiBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,29 +38,63 @@ class MainActivity : AppCompatActivity() {
                 activityMainUiBinding.secondNumber.text.toString().toLong()
             }
 
-            var result = if (mathOperation == "+") {
+            if (result == 0.toLong()) {
 
-                (firstNumber + secondNumber)
+                result = if (mathOperation == "+") {
 
-            } else if (mathOperation == "-") {
+                    (firstNumber + secondNumber)
 
-                (firstNumber - secondNumber)
+                } else if (mathOperation == "-") {
 
-
-            } else if (mathOperation == "*") {
-
-                (firstNumber * secondNumber)
+                    (firstNumber - secondNumber)
 
 
-            } else if (mathOperation == "/") {
+                } else if (mathOperation == "*") {
 
-                (firstNumber / secondNumber)
+                    (firstNumber * secondNumber)
+
+
+                } else if (mathOperation == "/") {
+
+                    (firstNumber / secondNumber)
+
+                } else {
+
+                    Toast.makeText(applicationContext, "Hey Idiot Select A Operation", Toast.LENGTH_LONG).show()
+
+                    0
+                }
 
             } else {
 
-                Toast.makeText(applicationContext, "Hey Idiot Select A Operation", Toast.LENGTH_LONG).show()
+                firstNumber = result
+                activityMainUiBinding.firstNumber.setText(result.toString())
 
-                ""
+                result = if (mathOperation == "+") {
+
+                    (firstNumber + secondNumber)
+
+                } else if (mathOperation == "-") {
+
+                    (firstNumber - secondNumber)
+
+
+                } else if (mathOperation == "*") {
+
+                    (firstNumber * secondNumber)
+
+
+                } else if (mathOperation == "/") {
+
+                    (firstNumber / secondNumber)
+
+                } else {
+
+                    Toast.makeText(applicationContext, "Hey Idiot Select A Operation", Toast.LENGTH_LONG).show()
+
+                    0
+                }
+
             }
 
             activityMainUiBinding.resultTextView.setText(result.toString())
