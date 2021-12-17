@@ -12,6 +12,8 @@ class MainActivity : AppCompatActivity() {
 
     var result: Long = 0
 
+    var nullablePhoneNumber: String? = null
+
     lateinit var activityMainUiBinding: ActivityMainUiBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -139,6 +141,19 @@ class MainActivity : AppCompatActivity() {
             mathOperation = "/"
 
             activityMainUiBinding.operationTextView.setText(mathOperation)
+
+        }
+
+        /*
+         * For Example After Login & There is NO Phone Number
+         */
+        if (nullablePhoneNumber == null) {
+
+            //Show Warning
+
+        } else {
+
+            //Save in Database
 
         }
 
