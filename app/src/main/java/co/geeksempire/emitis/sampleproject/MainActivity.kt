@@ -71,6 +71,34 @@ class MainActivity : AppCompatActivity() {
                     0
                 }
 
+                when (mathOperation) {
+                    "+" -> {
+
+
+
+                    }
+                    "-" -> {
+
+
+
+                    }
+                    "*" -> {
+
+
+
+                    }
+                    "/" -> {
+
+
+
+                    }
+                    else -> {
+
+
+
+                    }
+                }
+
             } else {
 
                 firstNumber = result
@@ -170,6 +198,22 @@ class MainActivity : AppCompatActivity() {
 
 
         }
+
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        //Start The MP3 Player - Song
+        //Change UI to Pause
+
+    }
+
+    override fun onPause() {
+        super.onPause()
+
+        //Pause The MP3 Player - Song
+        //Change UI to Play
 
     }
 

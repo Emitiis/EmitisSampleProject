@@ -47,4 +47,30 @@ class KotlinOverview {
         return (firstNumber * secondNumber)
     }
 
+    //
+    fun loopInData() {
+
+        repeat(10) {
+
+//            println(it)
+
+        }
+
+        (31..73).forEach {
+
+//            println(it)
+
+        }
+
+        //Example Of User Inputs
+        var allNumbers = "3 + 9 + 1 * 2"
+
+        allNumbers.forEachIndexed { index, character ->
+
+//            println("$index. " + character)
+
+        }
+
+    }
+
 }
