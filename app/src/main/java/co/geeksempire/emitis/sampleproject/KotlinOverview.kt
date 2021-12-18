@@ -1,6 +1,6 @@
 package co.geeksempire.emitis.sampleproject
 
-class KotlinOverview {
+class KotlinOverview /*(var firstInputNumber: Int, var  secondInputNumber: Int)*/{
 
     companion object {
         var firstBigNumber: Long = 123456789
