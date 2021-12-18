@@ -21,7 +21,11 @@ class MainActivity : AppCompatActivity() {
         activityMainUiBinding = ActivityMainUiBinding.inflate(layoutInflater)
         setContentView(activityMainUiBinding.root)
 
+//        savedInstanceState?.getString("") -> Safe Nullable Variable Call
+//        savedInstanceState!!.getString("") -> Assert Non-Null Variable
+
         activityMainUiBinding.equalTextView.setOnClickListener {
+
 
             //Get First Number
             var firstNumber: Long = if (activityMainUiBinding.firstNumber.text.isNullOrBlank()) {
@@ -147,13 +151,23 @@ class MainActivity : AppCompatActivity() {
         /*
          * For Example After Login & There is NO Phone Number
          */
-        if (nullablePhoneNumber == null) {
+        if (nullablePhoneNumber == null) {//If Equal To
 
-            //Show Warning
+
 
         } else {
 
-            //Save in Database
+
+
+        }
+
+        if (nullablePhoneNumber != null) {//If NOT Equal To
+
+
+
+        } else {
+
+
 
         }
 
