@@ -27,6 +27,14 @@ class MainActivity : AppCompatActivity() {
         activityMainUiBinding.equalTextView.setOnClickListener {
 
 
+
+//            val kotlinOverview = KotlinOverview()
+//
+//            val finalResult = kotlinOverview.multiplyNumbers(activityMainUiBinding.firstNumber.text.toString().toInt(),
+//                activityMainUiBinding.secondNumber.text.toString().toInt())
+
+
+
             //Get First Number
             var firstNumber: Long = if (activityMainUiBinding.firstNumber.text.isNullOrBlank()) {
                 Toast.makeText(applicationContext, "Hey Idiot Add A Number", Toast.LENGTH_LONG).show()

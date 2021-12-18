@@ -10,8 +10,8 @@ class KotlinOverview {
     var correctAnswer: Boolean = true
 
     //Numbers
-    var firstNumber: Int = 30
-    var secondNumber: Int = 10
+//    var firstNumber: Int = 30
+//    var secondNumber: Int = 10
 
 
     var aFloatNumber: Float = 1.1f
@@ -34,17 +34,19 @@ class KotlinOverview {
     var mathOperation: String = ""
 
     // A Function To Sum Up Two Numbers
-    fun sumUpNumbers() : Int /* Return Result As A Number */ {
+    fun sumUpNumbers(firstInputNumber: Int, secondInputNumber: Int) : Int /* Return Result As A Number */ {
 
-        var result = (firstNumber + secondNumber)
+        var result = (firstInputNumber + secondInputNumber)
 
         return result
     }
 
     // A Function To Multiply Two Numbers
-    fun multiplyNumbers() : Int {
+    fun multiplyNumbers(firstInputNumber: Int, secondInputNumber: Int) : Int {
 
-        return (firstNumber * secondNumber)
+        var result = (firstInputNumber * secondInputNumber)
+
+        return result
     }
 
     //
