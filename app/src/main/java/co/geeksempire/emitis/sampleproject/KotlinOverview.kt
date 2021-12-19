@@ -81,11 +81,11 @@ class KotlinOverview /*(var firstInputNumber: Int, var  secondInputNumber: Int)*
 
                 val aNumber = character.toInt()
 
-                if (operationDetected == false) {
+                if (operationDetected == false) {//Off
 
                     resultNumber = aNumber
 
-                } else if (operationDetected == true){
+                } else if (operationDetected == true){//On
 
                     when (whichOperationTypeDetected) {
                         "+" -> {
