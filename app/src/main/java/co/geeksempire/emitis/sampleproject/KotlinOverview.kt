@@ -64,12 +64,66 @@ class KotlinOverview /*(var firstInputNumber: Int, var  secondInputNumber: Int)*
 
         }
 
-        //Example Of User Inputs
-        var allNumbers = "3 + 9 + 1 * 2"
+        //
+        // Example Of User's Inputs
+        //
+        var resultNumber = 0
 
-        allNumbers.forEachIndexed { index, character ->
+        var operationDetected: Boolean = false
 
-//            println("$index. " + character)
+        var whichOperationTypeDetected = "+"
+
+        var allInputNumbers = "13 + 197 - 3 * 73" // = 15,111
+
+        allInputNumbers.split(" ").forEach { character ->
+
+            if (character.toIntOrNull() != null) {//Number Detected
+
+                val aNumber = character.toInt()
+
+                if (operationDetected == false) {
+
+                    resultNumber = aNumber
+
+                } else if (operationDetected == true){
+
+                    when (whichOperationTypeDetected) {
+                        "+" -> {
+
+                            //resultNumber = resultNumber + aNumber
+                            resultNumber += aNumber
+
+                        }
+                        "-" -> {
+
+                            resultNumber -= aNumber
+
+                        }
+                        "*" -> {
+
+                            resultNumber *= aNumber
+
+                        }
+                        "/" -> {
+
+                            resultNumber /= aNumber
+
+                        }
+                    }
+
+                    operationDetected = false
+
+                }
+
+            } else if (character == "+" || /*OR*/ character == "-" || character == "*" || character == "/") {
+
+                operationDetected = true
+
+                whichOperationTypeDetected = character // -> + - * /
+
+            }
+
+            println("Final Result = " + resultNumber)
 
         }
 
