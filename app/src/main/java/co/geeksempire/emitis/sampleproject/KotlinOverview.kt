@@ -36,18 +36,13 @@ class KotlinOverview /*(var firstInputNumber: Int, var  secondInputNumber: Int)*
     // A Function To Sum Up Two Numbers
     fun sumUpNumbers(firstInputNumber: Int, secondInputNumber: Int) : Int /* Return Result As A Number */ {
 
-        var result = (firstInputNumber + secondInputNumber)
+        val result = (firstInputNumber + secondInputNumber)
 
         return result
     }
 
     // A Function To Multiply Two Numbers
-    fun multiplyNumbers(firstInputNumber: Int, secondInputNumber: Int) : Int {
-
-        var result = (firstInputNumber * secondInputNumber)
-
-        return result
-    }
+    fun multiplyNumbers(firstInputNumber: Int, secondInputNumber: Int) : Int = (firstInputNumber * secondInputNumber)
 
     //
     fun loopInData() {
