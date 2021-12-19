@@ -7,6 +7,12 @@ import co.geeksempire.emitis.sampleproject.databinding.ActivityMainUiBinding
 
 class MainActivity : AppCompatActivity() {
 
+    //val kotlinOverview: KotlinOverview = KotlinOverview() // -> Not Recommended
+    // by laze -> It means to define the class later, when needed.
+    val kotlinOverview: KotlinOverview by lazy {
+        KotlinOverview()
+    }
+
     // + - / *
     var mathOperation: String = ""
 
@@ -24,9 +30,37 @@ class MainActivity : AppCompatActivity() {
 //        savedInstanceState?.getString("") -> Safe Nullable Variable Call
 //        savedInstanceState!!.getString("") -> Assert Non-Null Variable
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         activityMainUiBinding.equalTextView.setOnClickListener {
-
-
 
 //            val kotlinOverview = KotlinOverview()
 //
