@@ -16,12 +16,6 @@ class Preferences (val context: Context) {
     private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "Settings",
         scope = CoroutineScope(SupervisorJob() + Dispatchers.IO))
 
-
-
-
-
-
-
     suspend fun savePreferences(preferenceKey: Preferences.Key<String>, inputValue: String) {
 
         // Key         ->   Value
