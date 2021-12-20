@@ -17,7 +17,7 @@ class KotlinOverview /*(var firstInputNumber: Int, var  secondInputNumber: Int)*
     var aFloatNumber: Float = 1.1f
     var aDoubleNumber: Double = 123456789.666
 
-    val aValueNumber = "777"
+    val aConstantNumber = "777"
 
     fun mixTexts() {
 

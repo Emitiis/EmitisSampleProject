@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:paddingHorizontal="51dp"
         android:paddingVertical="7dp"
-        android:layout_marginTop="239dp"
+        android:layout_marginTop="221dp"
 
         android:text="Equal"
         android:textColor="@color/teal_200"

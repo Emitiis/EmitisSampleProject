@@ -31,35 +31,6 @@ class MainActivity : AppCompatActivity() {
 //        savedInstanceState!!.getString("") -> Assert Non-Null Variable
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         activityMainUiBinding.equalTextView.setOnClickListener {
 
 //            val kotlinOverview = KotlinOverview()
@@ -68,20 +39,29 @@ class MainActivity : AppCompatActivity() {
 //                activityMainUiBinding.secondNumber.text.toString().toInt())
 
 
-
             //Get First Number
             var firstNumber: Long = if (activityMainUiBinding.firstNumber.text.isNullOrBlank()) {
-                Toast.makeText(applicationContext, "Hey Idiot Add A Number", Toast.LENGTH_LONG).show()
+
+                Toast
+                    .makeText(
+                        applicationContext,
+                        "Hey Idiot Add A Number", Toast.LENGTH_LONG
+                    )
+                    .show()
 
                 0
+
             } else {
                 activityMainUiBinding.firstNumber.text.toString().toLong()
             }
             //Get Second Number
-            var secondNumber: Long =  if (activityMainUiBinding.secondNumber.text.isNullOrBlank()) {
-                Toast.makeText(applicationContext, "Hey Idiot Add A Number", Toast.LENGTH_LONG).show()
+            var secondNumber: Long = if (activityMainUiBinding.secondNumber.text.isNullOrBlank()) {
+
+                Toast.makeText(applicationContext, "Hey Idiot Add A Number", Toast.LENGTH_LONG)
+                    .show()
 
                 0
+
             } else {
                 activityMainUiBinding.secondNumber.text.toString().toLong()
             }
@@ -96,7 +76,6 @@ class MainActivity : AppCompatActivity() {
 
                     (firstNumber - secondNumber)
 
-
                 } else if (mathOperation == "*") {
 
                     (firstNumber * secondNumber)
@@ -108,7 +87,11 @@ class MainActivity : AppCompatActivity() {
 
                 } else {
 
-                    Toast.makeText(applicationContext, "Hey Idiot Select A Operation", Toast.LENGTH_LONG).show()
+                    Toast.makeText(
+                        applicationContext,
+                        "Hey Idiot Select A Operation",
+                        Toast.LENGTH_LONG
+                    ).show()
 
                     0
                 }
@@ -117,25 +100,20 @@ class MainActivity : AppCompatActivity() {
                     "+" -> {
 
 
-
                     }
                     "-" -> {
-
 
 
                     }
                     "*" -> {
 
 
-
                     }
                     "/" -> {
 
 
-
                     }
                     else -> {
-
 
 
                     }
@@ -166,7 +144,11 @@ class MainActivity : AppCompatActivity() {
 
                 } else {
 
-                    Toast.makeText(applicationContext, "Hey Idiot Select A Operation", Toast.LENGTH_LONG).show()
+                    Toast.makeText(
+                        applicationContext,
+                        "Hey Idiot Select A Operation",
+                        Toast.LENGTH_LONG
+                    ).show()
 
                     0
                 }
@@ -224,9 +206,7 @@ class MainActivity : AppCompatActivity() {
         if (nullablePhoneNumber == null) {//If Equal To
 
 
-
         } else {
-
 
 
         }
@@ -234,9 +214,7 @@ class MainActivity : AppCompatActivity() {
         if (nullablePhoneNumber != null) {//If NOT Equal To
 
 
-
         } else {
-
 
 
         }
@@ -248,7 +226,7 @@ class MainActivity : AppCompatActivity() {
 
         //Start The MP3 Player - Song
         //Change UI to Pause
-
+        
     }
 
     override fun onPause() {
