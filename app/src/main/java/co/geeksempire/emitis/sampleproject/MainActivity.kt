@@ -41,39 +41,13 @@ class MainActivity : AppCompatActivity() {
 
             booleanUsage()
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //            val kotlinOverview = KotlinOverview()
 //
 //            val finalResult = kotlinOverview.multiplyNumbers(activityMainUiBinding.firstNumber.text.toString().toInt(),
 //                activityMainUiBinding.secondNumber.text.toString().toInt())
-
-
-            //Get First Number
+//
+//
+//            //Get First Number
 //            var firstNumber: Long = if (activityMainUiBinding.firstNumber.text.isNullOrBlank()) {
 //
 //                Toast
@@ -88,7 +62,7 @@ class MainActivity : AppCompatActivity() {
 //            } else {
 //                activityMainUiBinding.firstNumber.text.toString().toLong()
 //            }
-            //Get Second Number
+//            //Get Second Number
 //            var secondNumber: Long = if (activityMainUiBinding.secondNumber.text.isNullOrBlank()) {
 //
 //                Toast.makeText(applicationContext, "Hey Idiot Add A Number", Toast.LENGTH_LONG)
@@ -99,7 +73,7 @@ class MainActivity : AppCompatActivity() {
 //            } else {
 //                activityMainUiBinding.secondNumber.text.toString().toLong()
 //            }
-
+//
 //            if (result == 0.toLong()) {
 //
 //                result = if (mathOperation == "+") {
@@ -188,16 +162,16 @@ class MainActivity : AppCompatActivity() {
 //                }
 //
 //            }
-
+//
 //            activityMainUiBinding.resultTextView.setText(result.toString())
-
-            //1 - Change Text Color
+//
+//            //1 - Change Text Color
 //            activityMainUiBinding.equalTextView.setTextColor(getColor(R.color.pink))
-
-            //2 - Change Background Color
+//
+//            //2 - Change Background Color
 //            activityMainUiBinding.equalTextView.setBackgroundColor(getColor(android.R.color.holo_blue_light))
-
-            //3 - Show A Toast Message
+//
+//            //3 - Show A Toast Message
 //            Toast.makeText(applicationContext, getString(R.string.testId), Toast.LENGTH_LONG).show()
 
         }
@@ -278,13 +252,13 @@ class MainActivity : AppCompatActivity() {
 
         if (buttonPressed == false) {
 
-            activityMainUiBinding.equalTextView.backgroundTintList = ColorStateList.valueOf(Color.GREEN)
+            activityMainUiBinding.root.setBackgroundColor(Color.YELLOW)
 
             buttonPressed = true
 
         } else if (buttonPressed == true) {
 
-            activityMainUiBinding.equalTextView.backgroundTintList = ColorStateList.valueOf(Color.BLUE)
+            activityMainUiBinding.root.setBackgroundColor(Color.BLACK)
 
             buttonPressed = false
 
