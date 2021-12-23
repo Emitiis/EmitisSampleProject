@@ -1,5 +1,7 @@
 package co.geeksempire.emitis.sampleproject
 
+import android.content.res.ColorStateList
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -20,6 +22,9 @@ class MainActivity : AppCompatActivity() {
 
     var nullablePhoneNumber: String? = null
 
+    // Boolean is A Switch To Detect State (Condition)
+    var buttonPressed: Boolean = false // -> True/False
+
     lateinit var activityMainUiBinding: ActivityMainUiBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,7 +36,36 @@ class MainActivity : AppCompatActivity() {
 //        savedInstanceState!!.getString("") -> Assert Non-Null Variable
 
 
+
         activityMainUiBinding.equalTextView.setOnClickListener {
+
+            booleanUsage()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //            val kotlinOverview = KotlinOverview()
 //
@@ -40,131 +74,131 @@ class MainActivity : AppCompatActivity() {
 
 
             //Get First Number
-            var firstNumber: Long = if (activityMainUiBinding.firstNumber.text.isNullOrBlank()) {
-
-                Toast
-                    .makeText(
-                        applicationContext,
-                        "Hey Idiot Add A Number", Toast.LENGTH_LONG
-                    )
-                    .show()
-
-                0
-
-            } else {
-                activityMainUiBinding.firstNumber.text.toString().toLong()
-            }
+//            var firstNumber: Long = if (activityMainUiBinding.firstNumber.text.isNullOrBlank()) {
+//
+//                Toast
+//                    .makeText(
+//                        applicationContext,
+//                        "Hey Idiot Add A Number", Toast.LENGTH_LONG
+//                    )
+//                    .show()
+//
+//                0
+//
+//            } else {
+//                activityMainUiBinding.firstNumber.text.toString().toLong()
+//            }
             //Get Second Number
-            var secondNumber: Long = if (activityMainUiBinding.secondNumber.text.isNullOrBlank()) {
+//            var secondNumber: Long = if (activityMainUiBinding.secondNumber.text.isNullOrBlank()) {
+//
+//                Toast.makeText(applicationContext, "Hey Idiot Add A Number", Toast.LENGTH_LONG)
+//                    .show()
+//
+//                0
+//
+//            } else {
+//                activityMainUiBinding.secondNumber.text.toString().toLong()
+//            }
 
-                Toast.makeText(applicationContext, "Hey Idiot Add A Number", Toast.LENGTH_LONG)
-                    .show()
+//            if (result == 0.toLong()) {
+//
+//                result = if (mathOperation == "+") {
+//
+//                    (firstNumber + secondNumber)
+//
+//                } else if (mathOperation == "-") {
+//
+//                    (firstNumber - secondNumber)
+//
+//                } else if (mathOperation == "*") {
+//
+//                    (firstNumber * secondNumber)
+//
+//
+//                } else if (mathOperation == "/") {
+//
+//                    (firstNumber / secondNumber)
+//
+//                } else {
+//
+//                    Toast.makeText(
+//                        applicationContext,
+//                        "Hey Idiot Select A Operation",
+//                        Toast.LENGTH_LONG
+//                    ).show()
+//
+//                    0
+//                }
+//
+//                when (mathOperation) {
+//                    "+" -> {
+//
+//
+//                    }
+//                    "-" -> {
+//
+//
+//                    }
+//                    "*" -> {
+//
+//
+//                    }
+//                    "/" -> {
+//
+//
+//                    }
+//                    else -> {
+//
+//
+//                    }
+//                }
+//
+//            } else {
+//
+//                firstNumber = result
+//                activityMainUiBinding.firstNumber.setText(result.toString())
+//
+//                result = if (mathOperation == "+") {
+//
+//                    (firstNumber + secondNumber)
+//
+//                } else if (mathOperation == "-") {
+//
+//                    (firstNumber - secondNumber)
+//
+//
+//                } else if (mathOperation == "*") {
+//
+//                    (firstNumber * secondNumber)
+//
+//
+//                } else if (mathOperation == "/") {
+//
+//                    (firstNumber / secondNumber)
+//
+//                } else {
+//
+//                    Toast.makeText(
+//                        applicationContext,
+//                        "Hey Idiot Select A Operation",
+//                        Toast.LENGTH_LONG
+//                    ).show()
+//
+//                    0
+//                }
+//
+//            }
 
-                0
-
-            } else {
-                activityMainUiBinding.secondNumber.text.toString().toLong()
-            }
-
-            if (result == 0.toLong()) {
-
-                result = if (mathOperation == "+") {
-
-                    (firstNumber + secondNumber)
-
-                } else if (mathOperation == "-") {
-
-                    (firstNumber - secondNumber)
-
-                } else if (mathOperation == "*") {
-
-                    (firstNumber * secondNumber)
-
-
-                } else if (mathOperation == "/") {
-
-                    (firstNumber / secondNumber)
-
-                } else {
-
-                    Toast.makeText(
-                        applicationContext,
-                        "Hey Idiot Select A Operation",
-                        Toast.LENGTH_LONG
-                    ).show()
-
-                    0
-                }
-
-                when (mathOperation) {
-                    "+" -> {
-
-
-                    }
-                    "-" -> {
-
-
-                    }
-                    "*" -> {
-
-
-                    }
-                    "/" -> {
-
-
-                    }
-                    else -> {
-
-
-                    }
-                }
-
-            } else {
-
-                firstNumber = result
-                activityMainUiBinding.firstNumber.setText(result.toString())
-
-                result = if (mathOperation == "+") {
-
-                    (firstNumber + secondNumber)
-
-                } else if (mathOperation == "-") {
-
-                    (firstNumber - secondNumber)
-
-
-                } else if (mathOperation == "*") {
-
-                    (firstNumber * secondNumber)
-
-
-                } else if (mathOperation == "/") {
-
-                    (firstNumber / secondNumber)
-
-                } else {
-
-                    Toast.makeText(
-                        applicationContext,
-                        "Hey Idiot Select A Operation",
-                        Toast.LENGTH_LONG
-                    ).show()
-
-                    0
-                }
-
-            }
-
-            activityMainUiBinding.resultTextView.setText(result.toString())
+//            activityMainUiBinding.resultTextView.setText(result.toString())
 
             //1 - Change Text Color
-            activityMainUiBinding.equalTextView.setTextColor(getColor(R.color.pink))
+//            activityMainUiBinding.equalTextView.setTextColor(getColor(R.color.pink))
 
             //2 - Change Background Color
-            activityMainUiBinding.equalTextView.setBackgroundColor(getColor(android.R.color.holo_blue_light))
+//            activityMainUiBinding.equalTextView.setBackgroundColor(getColor(android.R.color.holo_blue_light))
 
             //3 - Show A Toast Message
-            Toast.makeText(applicationContext, getString(R.string.testId), Toast.LENGTH_LONG).show()
+//            Toast.makeText(applicationContext, getString(R.string.testId), Toast.LENGTH_LONG).show()
 
         }
 
@@ -234,6 +268,27 @@ class MainActivity : AppCompatActivity() {
 
         //Pause The MP3 Player - Song
         //Change UI to Play
+
+    }
+
+    fun booleanUsage() {
+
+        // False -> Green Color
+        // True -> Blue Color
+
+        if (buttonPressed == false) {
+
+            activityMainUiBinding.equalTextView.backgroundTintList = ColorStateList.valueOf(Color.GREEN)
+
+            buttonPressed = true
+
+        } else if (buttonPressed == true) {
+
+            activityMainUiBinding.equalTextView.backgroundTintList = ColorStateList.valueOf(Color.BLUE)
+
+            buttonPressed = false
+
+        }
 
     }
 
