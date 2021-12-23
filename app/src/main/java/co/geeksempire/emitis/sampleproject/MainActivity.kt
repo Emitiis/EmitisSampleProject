@@ -35,11 +35,11 @@ class MainActivity : AppCompatActivity() {
 //        savedInstanceState?.getString("") -> Safe Nullable Variable Call
 //        savedInstanceState!!.getString("") -> Assert Non-Null Variable
 
-
-
         activityMainUiBinding.equalTextView.setOnClickListener {
 
-            booleanUsage()
+            val finalResult = kotlinOverview.calculateAllInputNumbers(activityMainUiBinding.allNumbers.text.toString())
+
+            activityMainUiBinding.resultTextView.text = finalResult.toString()
 
 //            val kotlinOverview = KotlinOverview()
 //

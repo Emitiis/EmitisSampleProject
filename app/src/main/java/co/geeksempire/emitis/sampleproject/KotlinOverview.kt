@@ -47,28 +47,29 @@ class KotlinOverview /*(var firstInputNumber: Int, var  secondInputNumber: Int)*
     //
     fun loopInData() {
 
-        repeat(10) {
-
+//        repeat(10) {
+//
 //            println(it)
+//
+//        }
 
-        }
-
-        (31..73).forEach {
-
+//        (31..73).forEach {
+//
 //            println(it)
-
-        }
+//
+//        }
 
         //
         // Example Of User's Inputs
         //
-        var resultNumber = 0
+        var resultNumber: Int = 0
 
         var operationDetected: Boolean = false
 
-        var whichOperationTypeDetected = "+"
+        var whichOperationTypeDetected: String = "+"
 
-        var allInputNumbers = "13 + 197 - 3 * 73" // = 15,111
+        //activityMainUiBinding.inputEditText.text.toString()
+        var allInputNumbers = "19 + 197 - 3 * 73 * 2 + 5 / 99 + 79" // = 15,111
 
         allInputNumbers.split(" ").forEach { character ->
 
@@ -122,6 +123,72 @@ class KotlinOverview /*(var firstInputNumber: Int, var  secondInputNumber: Int)*
 
         }
 
+    }
+
+    fun calculateAllInputNumbers(allInputNumbers: String) : Int {
+
+        //
+        // Example Of User's Inputs
+        //
+        var resultNumber: Int = 0
+
+        var operationDetected: Boolean = false
+
+        var whichOperationTypeDetected: String = "+"
+
+        allInputNumbers.split(" ").forEach { character ->
+
+            if (character.toIntOrNull() != null) {//Number Detected
+
+                val aNumber = character.toInt()
+
+                if (operationDetected == false) {//Off
+
+                    resultNumber = aNumber
+
+                } else if (operationDetected == true){//On
+
+                    when (whichOperationTypeDetected) {
+                        "+" -> {
+
+                            //resultNumber = resultNumber + aNumber
+                            resultNumber += aNumber
+
+                        }
+                        "-" -> {
+
+                            resultNumber -= aNumber
+
+                        }
+                        "*" -> {
+
+                            resultNumber *= aNumber
+
+                        }
+                        "/" -> {
+
+                            resultNumber /= aNumber
+
+                        }
+                    }
+
+                    operationDetected = false
+
+                }
+
+            } else if (character == "+" || /*OR*/ character == "-" || character == "*" || character == "/") {
+
+                operationDetected = true
+
+                whichOperationTypeDetected = character // -> + - * /
+
+            }
+
+            println("Final Result = " + resultNumber)
+
+        }
+
+        return resultNumber
     }
 
 }

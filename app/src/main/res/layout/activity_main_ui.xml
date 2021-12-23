@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:paddingHorizontal="51dp"
         android:paddingVertical="7dp"
-        android:layout_marginTop="221dp"
+        android:layout_marginTop="291dp"
 
         android:text="Equal"
         android:textColor="@color/teal_200"
@@ -27,31 +27,23 @@
         apps:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/firstNumber"
-        android:layout_width="100dp"
+        android:id="@+id/allNumbers"
+        android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginTop="173dp"
-        android:inputType="number"
 
         apps:layout_constraintTop_toTopOf="parent"
         apps:layout_constraintStart_toStartOf="parent"/>
 
-    <EditText
-        android:id="@+id/secondNumber"
-        android:layout_width="100dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="173dp"
-        android:inputType="number"
-
-        apps:layout_constraintTop_toTopOf="parent"
-        apps:layout_constraintEnd_toEndOf="parent"/>
-
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/sumOperationButton"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:text="+"
         android:textSize="23sp"
+
+        apps:cornerRadius="9dp"
+        apps:rippleColor="@android:color/holo_blue_bright"
 
         apps:layout_constraintBottom_toBottomOf="parent"
         apps:layout_constraintStart_toStartOf="parent" />
@@ -90,7 +82,7 @@
         android:id="@+id/operationTextView"
         android:layout_width="100dp"
         android:layout_height="50dp"
-        android:layout_marginTop="173dp"
+        android:layout_marginTop="233dp"
 
         apps:layout_constraintTop_toTopOf="parent"
         apps:layout_constraintStart_toStartOf="parent"
