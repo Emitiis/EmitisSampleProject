@@ -24,6 +24,9 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name=".ListOfData"/>
+
     </application>
 
 </manifest>

@@ -1,5 +1,6 @@
 package co.geeksempire.emitis.sampleproject
 
+import android.content.Intent
 import android.content.res.ColorStateList
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
@@ -224,6 +225,15 @@ class MainActivity : AppCompatActivity() {
 
         } else {
 
+
+        }
+
+        activityMainUiBinding.goToList.setOnClickListener {
+
+            val goToList = Intent(this@MainActivity /*From This Activity*/, ListOfData::class.java /*To This Activity*/)
+            goToList.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+
+            startActivity(goToList)
 
         }
 

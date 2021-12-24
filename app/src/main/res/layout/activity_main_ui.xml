@@ -26,6 +26,27 @@
         apps:layout_constraintRight_toRightOf="parent"
         apps:layout_constraintTop_toTopOf="parent" />
 
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/goToList"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="51dp"
+        android:paddingVertical="7dp"
+        android:layout_marginTop="391dp"
+        android:textAllCaps="false"
+
+        android:text="Go To List"
+        android:textColor="@color/teal_200"
+        android:textSize="29sp"
+
+        apps:cornerRadius="51dp"
+        apps:rippleColor="@android:color/holo_blue_bright"
+
+        apps:layout_constraintWidth_percent="0.7"
+        apps:layout_constraintLeft_toLeftOf="parent"
+        apps:layout_constraintRight_toRightOf="parent"
+        apps:layout_constraintTop_toTopOf="parent" />
+
     <EditText
         android:id="@+id/allNumbers"
         android:layout_width="match_parent"
