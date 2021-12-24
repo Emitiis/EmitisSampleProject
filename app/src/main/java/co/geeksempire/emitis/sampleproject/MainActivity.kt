@@ -1,11 +1,10 @@
 package co.geeksempire.emitis.sampleproject
 
 import android.content.Intent
-import android.content.res.ColorStateList
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
+import co.geeksempire.emitis.sampleproject.ListExample.ListOfData
 import co.geeksempire.emitis.sampleproject.databinding.ActivityMainUiBinding
 
 class MainActivity : AppCompatActivity() {
