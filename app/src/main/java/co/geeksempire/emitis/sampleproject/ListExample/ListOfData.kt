@@ -3,6 +3,7 @@ package co.geeksempire.emitis.sampleproject.ListExample
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import co.geeksempire.emitis.sampleproject.ListExample.Adapter.SimpleAdapter
 import co.geeksempire.emitis.sampleproject.databinding.ListDataLayoutBinding
 
 class ListOfData : AppCompatActivity() {
@@ -22,8 +23,12 @@ class ListOfData : AppCompatActivity() {
 
         }
 
+        val simpleAdapter = SimpleAdapter(this@ListOfData)
+        simpleAdapter.simpleListData.addAll(simpleListData)
+
         listDataLayoutBinding.dataRecyclerView.layoutManager = LinearLayoutManager(applicationContext)
 
+        listDataLayoutBinding.dataRecyclerView.adapter = simpleAdapter
 
     }
 
