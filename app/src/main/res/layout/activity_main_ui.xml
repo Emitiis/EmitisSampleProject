@@ -41,6 +41,11 @@
 
         apps:cornerRadius="51dp"
         apps:rippleColor="@android:color/holo_blue_bright"
+        apps:backgroundTint="@color/pink"
+        apps:icon="@android:drawable/arrow_down_float"
+        apps:iconTint="@color/black"
+        apps:strokeWidth="3dp"
+        apps:strokeColor="@android:color/holo_blue_bright"
 
         apps:layout_constraintWidth_percent="0.7"
         apps:layout_constraintLeft_toLeftOf="parent"
