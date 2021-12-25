@@ -11,11 +11,11 @@ import co.geeksempire.emitis.sampleproject.databinding.ItemDataLayoutBinding
 class SimpleAdapter (private val context: AppCompatActivity) : RecyclerView.Adapter<ItemDataViewHolder>() {
 
     //Input List For RecyclerView.Adapter
-    val simpleListData: ArrayList<String> = ArrayList<String>()
+    val inputSimpleListData: ArrayList<String> = ArrayList<String>()
 
     override fun getItemCount() : Int {
 
-        return simpleListData.size
+        return inputSimpleListData.size
     }
 
     //Set Layout For Adapter - UI
@@ -28,9 +28,9 @@ class SimpleAdapter (private val context: AppCompatActivity) : RecyclerView.Adap
     override fun onBindViewHolder(itemDataViewHolder: ItemDataViewHolder, position: Int) {
 
         //Set Data To Each Item
-        itemDataViewHolder.itemTextView.text = simpleListData[position] // 1 - 2 - 3 - 4 - 5 --- 99
+        itemDataViewHolder.itemTextView.text = inputSimpleListData[position] // 1 - 2 - 3 - 4 - 5 --- 99
 
-        if (simpleListData[position].toInt() % 2 == 0) {
+        if (inputSimpleListData[position].toInt() % 2 == 0) {
 
             itemDataViewHolder.secondItemTextView.text = "Even"
 
@@ -42,7 +42,7 @@ class SimpleAdapter (private val context: AppCompatActivity) : RecyclerView.Adap
 
         itemDataViewHolder.itemTextView.setOnClickListener {
 
-            Toast.makeText(context, simpleListData[position], Toast.LENGTH_LONG).show()
+            Toast.makeText(context, inputSimpleListData[position], Toast.LENGTH_LONG).show()
 
             itemDataViewHolder.clickForFun.backgroundTintList = ColorStateList.valueOf(Color.YELLOW)
 

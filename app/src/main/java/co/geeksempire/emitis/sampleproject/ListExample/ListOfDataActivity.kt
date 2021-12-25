@@ -30,10 +30,7 @@ class ListOfDataActivity : AppCompatActivity() {
         listDataLayoutBinding.dataRecyclerView.layoutManager = LinearLayoutManager(applicationContext)
         listDataLayoutBinding.dataRecyclerView.adapter = simpleAdapter
 
-
-
-
-        simpleAdapter.simpleListData.addAll(simpleListData)
+        simpleAdapter.inputSimpleListData.addAll(simpleListData)
 
         simpleAdapter.notifyDataSetChanged()
 
