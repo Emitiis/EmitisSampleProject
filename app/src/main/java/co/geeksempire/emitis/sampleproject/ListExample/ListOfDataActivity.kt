@@ -6,9 +6,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import co.geeksempire.emitis.sampleproject.ListExample.Adapter.SimpleAdapter
 import co.geeksempire.emitis.sampleproject.databinding.ListDataLayoutBinding
 
-class ListOfData : AppCompatActivity() {
+class ListOfDataActivity : AppCompatActivity() {
 
-    val simpleListData: ArrayList<String> = ArrayList<String>()
+    val simpleListData: ArrayList<String/*Type Of Each Item In The List*/> = ArrayList<String>()
 
     lateinit var listDataLayoutBinding: ListDataLayoutBinding
 
@@ -17,18 +17,25 @@ class ListOfData : AppCompatActivity() {
         listDataLayoutBinding = ListDataLayoutBinding.inflate(layoutInflater)
         setContentView(listDataLayoutBinding.root)
 
+        //Adding Data To List
         (1..99).forEach { number ->
 
             simpleListData.add(number.toString())
 
         }
 
-        val simpleAdapter = SimpleAdapter(this@ListOfData)
-        simpleAdapter.simpleListData.addAll(simpleListData)
+        //RecyclerView Always Needs A LayoutManager & Adapter
+        val simpleAdapter = SimpleAdapter(this@ListOfDataActivity)
 
         listDataLayoutBinding.dataRecyclerView.layoutManager = LinearLayoutManager(applicationContext)
-
         listDataLayoutBinding.dataRecyclerView.adapter = simpleAdapter
+
+
+
+
+        simpleAdapter.simpleListData.addAll(simpleListData)
+
+        simpleAdapter.notifyDataSetChanged()
 
     }
 

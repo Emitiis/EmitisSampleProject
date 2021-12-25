@@ -4,7 +4,7 @@ import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import co.geeksempire.emitis.sampleproject.ListExample.ListOfData
+import co.geeksempire.emitis.sampleproject.ListExample.ListOfDataActivity
 import co.geeksempire.emitis.sampleproject.databinding.ActivityMainUiBinding
 
 class MainActivity : AppCompatActivity() {
@@ -229,10 +229,10 @@ class MainActivity : AppCompatActivity() {
 
         activityMainUiBinding.goToList.setOnClickListener {
 
-            val goToList = Intent(this@MainActivity /*From This Activity*/, ListOfData::class.java /*To This Activity*/)
-            goToList.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+            val goToListIntent = Intent(this@MainActivity /*From Source Activity*/, ListOfDataActivity::class.java /*To Target Activity*/)
+            goToListIntent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
 
-            startActivity(goToList)
+            startActivity(goToListIntent)
 
         }
 
