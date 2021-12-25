@@ -44,8 +44,6 @@ class SimpleAdapter (private val context: AppCompatActivity) : RecyclerView.Adap
 
             Toast.makeText(context, inputSimpleListData[position], Toast.LENGTH_LONG).show()
 
-            itemDataViewHolder.clickForFun.backgroundTintList = ColorStateList.valueOf(Color.YELLOW)
-
         }
 
     }
