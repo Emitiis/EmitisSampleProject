@@ -1,7 +1,5 @@
 package co.geeksempire.emitis.sampleproject.ListExample.Adapter
 
-import android.content.res.ColorStateList
-import android.graphics.Color
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
