@@ -4,8 +4,6 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import co.geeksempire.emitis.sampleproject.databinding.OnlineChatLayoutBinding
-import java.net.URI
-import java.net.URL
 
 class OnlineChatActivity : AppCompatActivity() {
 
