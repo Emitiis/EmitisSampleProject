@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import co.geeksempire.emitis.sampleproject.databinding.OnlineChatLayoutBinding
+import java.net.URI
+import java.net.URL
 
 class OnlineChatActivity : AppCompatActivity() {
 
@@ -19,6 +21,7 @@ class OnlineChatActivity : AppCompatActivity() {
         Toast.makeText(applicationContext, userNameText, Toast.LENGTH_LONG).show()
 
         onlineChatLayoutBinding.userNameTextView.text = userNameText
+
     }
 
 }
