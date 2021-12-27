@@ -4,7 +4,7 @@ import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import co.geeksempire.emitis.sampleproject.ListExample.ListOfDataActivity
+import co.geeksempire.emitis.sampleproject.ListOfContacts.ListOfDataActivity
 import co.geeksempire.emitis.sampleproject.databinding.ActivityMainUiBinding
 
 class MainActivity : AppCompatActivity() {

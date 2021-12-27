@@ -25,7 +25,10 @@
         </activity>
 
         <activity
-            android:name=".ListExample.ListOfDataActivity"/>
+            android:name=".Chat.OnlineChatActivity"/>
+
+        <activity
+            android:name=".ListOfContacts.ListOfDataActivity"/>
 
     </application>
 
