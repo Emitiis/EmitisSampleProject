@@ -68,7 +68,6 @@ class ListOfDataActivity : AppCompatActivity() {
         simpleListData.add(dataHolder6)
         simpleListData.add(dataHolder7)
 
-
         simpleAdapter.inputSimpleListData.addAll(simpleListData)
 
     }
