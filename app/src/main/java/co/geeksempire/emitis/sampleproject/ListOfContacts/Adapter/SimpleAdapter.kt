@@ -36,8 +36,8 @@ class SimpleAdapter (private val context: AppCompatActivity) : RecyclerView.Adap
 
 //            Toast.makeText(context, inputSimpleListData[position].userName + " - " + inputSimpleListData[position].userAge, Toast.LENGTH_LONG).show()
 
-            val goToListIntent = Intent(context /*From Source Activity*/, OnlineChatActivity::class.java /*To Target Activity*/).apply {
-                putExtra("USERNAME", inputSimpleListData[position].userName)
+            val goToListIntent = Intent(context /* From Source Activity */, OnlineChatActivity::class.java /* To Target Activity */).apply {
+                putExtra("USERNAME" /* Key */, inputSimpleListData[position].userName /* Value */)
             }
             goToListIntent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
 

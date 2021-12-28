@@ -14,11 +14,15 @@ class OnlineChatActivity : AppCompatActivity() {
         onlineChatLayoutBinding = OnlineChatLayoutBinding.inflate(layoutInflater)
         setContentView(onlineChatLayoutBinding.root)
 
-        val userNameText = intent.getStringExtra("USERNAME")
+        if (intent.hasExtra("USERNAME")) {
 
-        Toast.makeText(applicationContext, userNameText, Toast.LENGTH_LONG).show()
+            val userNameText = intent.getStringExtra("USERNAME" /* Key */)
 
-        onlineChatLayoutBinding.userNameTextView.text = userNameText
+            Toast.makeText(applicationContext, userNameText, Toast.LENGTH_LONG).show()
+
+            onlineChatLayoutBinding.userNameTextView.text = userNameText
+
+        }
 
     }
 
