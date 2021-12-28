@@ -2,6 +2,7 @@ package co.geeksempire.emitis.sampleproject.ListOfContacts
 
 import android.os.Bundle
 import android.view.View
+import android.view.animation.AnimationUtils
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import co.geeksempire.emitis.sampleproject.ListOfContacts.Adapter.SimpleAdapter
@@ -37,6 +38,8 @@ class ListOfDataActivity : AppCompatActivity() {
                 simpleAdapter.notifyDataSetChanged()
 
                 listDataLayoutBinding.dataRecyclerView.visibility = View.VISIBLE
+                listDataLayoutBinding.dataRecyclerView.startAnimation(AnimationUtils.loadAnimation(applicationContext, R.anim.slide_from_right))
+
                 listDataLayoutBinding.waitingView.visibility = View.INVISIBLE
 
             }
