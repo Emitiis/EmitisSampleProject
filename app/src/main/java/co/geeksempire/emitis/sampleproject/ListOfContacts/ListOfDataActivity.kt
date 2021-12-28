@@ -5,6 +5,7 @@ import android.view.View
 import android.view.animation.AnimationUtils
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import co.geeksempire.emitis.sampleproject.ListOfContacts.Adapter.SimpleAdapter
 import co.geeksempire.emitis.sampleproject.ListOfContacts.DataStructure.DataHolder
 import co.geeksempire.emitis.sampleproject.R
@@ -27,7 +28,7 @@ class ListOfDataActivity : AppCompatActivity() {
         listDataLayoutBinding = ListDataLayoutBinding.inflate(layoutInflater)
         setContentView(listDataLayoutBinding.root)
 
-        listDataLayoutBinding.dataRecyclerView.layoutManager = LinearLayoutManager(applicationContext)
+        listDataLayoutBinding.dataRecyclerView.layoutManager = LinearLayoutManager(applicationContext, RecyclerView.HORIZONTAL, false)
         listDataLayoutBinding.dataRecyclerView.adapter = simpleAdapter
 
         prepareData().invokeOnCompletion {// IO Layer -> Only for Input/Output of Data & Can NOT Access Any Views in Layout
