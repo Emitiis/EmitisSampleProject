@@ -1,16 +1,23 @@
 package co.geeksempire.emitis.sampleproject.ListOfContacts
 
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import co.geeksempire.emitis.sampleproject.ListOfContacts.Adapter.SimpleAdapter
 import co.geeksempire.emitis.sampleproject.ListOfContacts.DataStructure.DataHolder
 import co.geeksempire.emitis.sampleproject.R
 import co.geeksempire.emitis.sampleproject.databinding.ListDataLayoutBinding
+import kotlinx.coroutines.*
 
 class ListOfDataActivity : AppCompatActivity() {
 
     val simpleListData: ArrayList<DataHolder/*Type Of Each Item In The List*/> = ArrayList<DataHolder>()
+
+    //RecyclerView Always Needs A LayoutManager & Adapter
+    val simpleAdapter: SimpleAdapter by lazy {
+        SimpleAdapter(this@ListOfDataActivity)
+    }
 
     lateinit var listDataLayoutBinding: ListDataLayoutBinding
 
@@ -18,6 +25,31 @@ class ListOfDataActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         listDataLayoutBinding = ListDataLayoutBinding.inflate(layoutInflater)
         setContentView(listDataLayoutBinding.root)
+
+        listDataLayoutBinding.dataRecyclerView.layoutManager = LinearLayoutManager(applicationContext)
+        listDataLayoutBinding.dataRecyclerView.adapter = simpleAdapter
+
+        prepareData().invokeOnCompletion {// IO Layer -> Only for Input/Output of Data & Can NOT Access Any Views in Layout
+
+            // Switch From IO Layer To Main Layer Because Of Modifying Views
+            CoroutineScope(Dispatchers.Main).launch {// Main Layer -> Can Access Views in Layout
+
+                simpleAdapter.notifyDataSetChanged()
+
+                listDataLayoutBinding.dataRecyclerView.visibility = View.VISIBLE
+                listDataLayoutBinding.waitingView.visibility = View.INVISIBLE
+
+            }
+
+        }
+
+    }
+
+    fun prepareData() = CoroutineScope(Dispatchers.IO).async {// 3 Or More Minutes Delay
+
+        delay(3333)// Just As Example
+        delay(777)// Just As Example
+        delay(555)// Just As Example
 
         //Adding Data To List
         val dataHolder1 = DataHolder (userName = "Kevin", userAge = 373, userImage = getDrawable(R.drawable.minions))
@@ -36,15 +68,12 @@ class ListOfDataActivity : AppCompatActivity() {
         simpleListData.add(dataHolder6)
         simpleListData.add(dataHolder7)
 
-        //RecyclerView Always Needs A LayoutManager & Adapter
-        val simpleAdapter = SimpleAdapter(this@ListOfDataActivity)
-
-        listDataLayoutBinding.dataRecyclerView.layoutManager = LinearLayoutManager(applicationContext)
-        listDataLayoutBinding.dataRecyclerView.adapter = simpleAdapter
 
         simpleAdapter.inputSimpleListData.addAll(simpleListData)
 
-        simpleAdapter.notifyDataSetChanged()
+    }
+
+    suspend fun prepareDataAsSuspend() {
 
     }
 
