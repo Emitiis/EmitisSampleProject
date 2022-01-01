@@ -1,5 +1,5 @@
 package co.geeksempire.emitis.sampleproject.ListOfContacts
 
 interface ActionsInterface {
-    fun clickOnUserImageView()
+    fun clickOnUserImageView(name: String)
 }

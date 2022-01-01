@@ -31,12 +31,20 @@ class ListOfDataActivity : AppCompatActivity() {
 
         //RecyclerView Always Needs A LayoutManager & Adapter
         val simpleAdapter: SimpleAdapter by lazy {
-            SimpleAdapter(this@ListOfDataActivity,  object : ActionsInterface {
+            SimpleAdapter(this@ListOfDataActivity, object : ActionsInterface {
 
-                override fun clickOnUserImageView() {
+                override fun clickOnUserImageView(name: String) {
                     println("Click Action Handling From Activity Class")
 
-                    listDataLayoutBinding.root.setBackgroundColor(Color.YELLOW)
+                    if (name == "Sauron") {
+
+                        listDataLayoutBinding.root.setBackgroundColor(Color.BLACK)
+
+                    } else {
+
+                        listDataLayoutBinding.root.setBackgroundColor(Color.YELLOW)
+
+                    }
 
                 }
 

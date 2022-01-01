@@ -36,7 +36,7 @@ class SimpleAdapter (private val context: ListOfDataActivity, val actionsInterfa
         itemDataViewHolder.userImageView.setOnClickListener {
             println("Click Action Inside Adapter Class")
 
-            actionsInterface!!.clickOnUserImageView()
+            actionsInterface!!.clickOnUserImageView(inputSimpleListData[position].userName)
 
         }
 
