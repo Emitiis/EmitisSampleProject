@@ -30,8 +30,7 @@ class ListOfDataActivity : AppCompatActivity() {
         setContentView(listDataLayoutBinding.root)
 
         //RecyclerView Always Needs A LayoutManager & Adapter
-        val simpleAdapter: SimpleAdapter by lazy {
-            SimpleAdapter(this@ListOfDataActivity, object : ActionsInterface {
+        val simpleAdapter = SimpleAdapter(this@ListOfDataActivity, object : ActionsInterface {
 
                 override fun clickOnUserImageView(name: String) {
                     println("Click Action Handling From Activity Class")
@@ -49,7 +48,6 @@ class ListOfDataActivity : AppCompatActivity() {
                 }
 
             })
-        }
 
         listDataLayoutBinding.dataRecyclerView.layoutManager = LinearLayoutManager(applicationContext, RecyclerView.HORIZONTAL, false)
         listDataLayoutBinding.dataRecyclerView.adapter = simpleAdapter
