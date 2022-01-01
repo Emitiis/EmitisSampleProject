@@ -2,13 +2,14 @@ package co.geeksempire.emitis.sampleproject.ListOfContacts.Adapter
 
 import android.content.Intent
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import co.geeksempire.emitis.sampleproject.Chat.OnlineChatActivity
+import co.geeksempire.emitis.sampleproject.ListOfContacts.ActionsInterface
 import co.geeksempire.emitis.sampleproject.ListOfContacts.DataStructure.DataHolder
+import co.geeksempire.emitis.sampleproject.ListOfContacts.ListOfDataActivity
 import co.geeksempire.emitis.sampleproject.databinding.ItemDataLayoutBinding
 
-class SimpleAdapter (private val context: AppCompatActivity) : RecyclerView.Adapter<ItemDataViewHolder>() {
+class SimpleAdapter (private val context: ListOfDataActivity, val actionsInterface: ActionsInterface?) : RecyclerView.Adapter<ItemDataViewHolder>() {
 
     //Input List For RecyclerView.Adapter
     val inputSimpleListData: ArrayList<DataHolder> = ArrayList<DataHolder>()
@@ -31,6 +32,13 @@ class SimpleAdapter (private val context: AppCompatActivity) : RecyclerView.Adap
         itemDataViewHolder.userNameTextView.text = inputSimpleListData[position].userName
         itemDataViewHolder.userAgeTextView.text = inputSimpleListData[position].userAge.toString()
         itemDataViewHolder.userImageView.setImageDrawable(inputSimpleListData[position].userImage)
+
+        itemDataViewHolder.userImageView.setOnClickListener {
+            println("Click Action Inside Adapter Class")
+
+            actionsInterface!!.clickOnUserImageView()
+
+        }
 
         itemDataViewHolder.rootItemView.setOnClickListener {
 

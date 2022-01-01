@@ -1,11 +1,13 @@
 package co.geeksempire.emitis.sampleproject.ListOfContacts
 
+import android.graphics.Color
 import android.os.Bundle
 import android.view.View
 import android.view.animation.AnimationUtils
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import co.geeksempire.emitis.sampleproject.KotlinOverview
 import co.geeksempire.emitis.sampleproject.ListOfContacts.Adapter.SimpleAdapter
 import co.geeksempire.emitis.sampleproject.ListOfContacts.DataStructure.DataHolder
 import co.geeksempire.emitis.sampleproject.R
@@ -16,9 +18,8 @@ class ListOfDataActivity : AppCompatActivity() {
 
     val simpleListData: ArrayList<DataHolder/*Type Of Each Item In The List*/> = ArrayList<DataHolder>()
 
-    //RecyclerView Always Needs A LayoutManager & Adapter
-    val simpleAdapter: SimpleAdapter by lazy {
-        SimpleAdapter(this@ListOfDataActivity)
+    val kotlinOverview: KotlinOverview by lazy {
+        KotlinOverview()
     }
 
     lateinit var listDataLayoutBinding: ListDataLayoutBinding
@@ -28,10 +29,24 @@ class ListOfDataActivity : AppCompatActivity() {
         listDataLayoutBinding = ListDataLayoutBinding.inflate(layoutInflater)
         setContentView(listDataLayoutBinding.root)
 
+        //RecyclerView Always Needs A LayoutManager & Adapter
+        val simpleAdapter: SimpleAdapter by lazy {
+            SimpleAdapter(this@ListOfDataActivity,  object : ActionsInterface {
+
+                override fun clickOnUserImageView() {
+                    println("Click Action Handling From Activity Class")
+
+                    listDataLayoutBinding.root.setBackgroundColor(Color.YELLOW)
+
+                }
+
+            })
+        }
+
         listDataLayoutBinding.dataRecyclerView.layoutManager = LinearLayoutManager(applicationContext, RecyclerView.HORIZONTAL, false)
         listDataLayoutBinding.dataRecyclerView.adapter = simpleAdapter
 
-        prepareData().invokeOnCompletion {// IO Layer -> Only for Input/Output of Data & Can NOT Access Any Views in Layout
+        prepareData(simpleAdapter).invokeOnCompletion {// IO Layer -> Only for Input/Output of Data & Can NOT Access Any Views in Layout
 
             // Switch From IO Layer To Main Layer Because Of Modifying Views
             CoroutineScope(Dispatchers.Main).launch {// Main Layer -> Can Access Views in Layout
@@ -49,7 +64,7 @@ class ListOfDataActivity : AppCompatActivity() {
 
     }
 
-    fun prepareData() = CoroutineScope(Dispatchers.IO).async {// 3 Or More Minutes Delay
+    fun prepareData(simpleAdapter: SimpleAdapter) = CoroutineScope(Dispatchers.IO).async {// 3 Or More Minutes Delay
 
         delay(3333)// Just As Example
         delay(777)// Just As Example

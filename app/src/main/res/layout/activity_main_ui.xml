@@ -114,7 +114,7 @@
         apps:layout_constraintStart_toStartOf="parent"
         apps:layout_constraintEnd_toEndOf="parent"/>
 
-    <co.geeksempire.emitis.sampleproject.CustomViews.GestureTextView
+    <TextView
         android:id="@+id/resultTextView"
         android:layout_width="match_parent"
         android:layout_height="100dp"
