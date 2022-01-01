@@ -2,8 +2,8 @@ package co.geeksempire.emitis.sampleproject
 
 import android.content.Intent
 import android.graphics.Color
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import co.geeksempire.emitis.sampleproject.ListOfContacts.ListOfDataActivity
 import co.geeksempire.emitis.sampleproject.databinding.ActivityMainUiBinding
 
