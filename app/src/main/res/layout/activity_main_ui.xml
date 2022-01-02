@@ -52,6 +52,32 @@
         apps:layout_constraintRight_toRightOf="parent"
         apps:layout_constraintTop_toTopOf="parent" />
 
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/goOnlineImage"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="51dp"
+        android:paddingVertical="7dp"
+        android:layout_marginTop="491dp"
+        android:textAllCaps="false"
+
+        android:text="Go To Online Image"
+        android:textColor="@color/teal_200"
+        android:textSize="17sp"
+
+        apps:cornerRadius="51dp"
+        apps:rippleColor="@android:color/holo_blue_bright"
+        apps:backgroundTint="@color/pink"
+        apps:icon="@android:drawable/arrow_down_float"
+        apps:iconTint="@color/black"
+        apps:strokeWidth="3dp"
+        apps:strokeColor="@android:color/holo_blue_bright"
+
+        apps:layout_constraintWidth_percent="0.9"
+        apps:layout_constraintLeft_toLeftOf="parent"
+        apps:layout_constraintRight_toRightOf="parent"
+        apps:layout_constraintTop_toTopOf="parent" />
+
     <EditText
         android:id="@+id/allNumbers"
         android:layout_width="match_parent"

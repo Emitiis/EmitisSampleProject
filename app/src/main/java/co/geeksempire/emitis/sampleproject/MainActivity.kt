@@ -5,6 +5,7 @@ import android.graphics.Color
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import co.geeksempire.emitis.sampleproject.ListOfContacts.ListOfDataActivity
+import co.geeksempire.emitis.sampleproject.Networking.OnlineGalleryActivity
 import co.geeksempire.emitis.sampleproject.databinding.ActivityMainUiBinding
 
 class MainActivity : AppCompatActivity() {
@@ -230,6 +231,15 @@ class MainActivity : AppCompatActivity() {
         activityMainUiBinding.goToList.setOnClickListener {
 
             val goToListIntent = Intent(this@MainActivity /*From Source Activity*/, ListOfDataActivity::class.java /*To Target Activity*/)
+            goToListIntent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+
+            startActivity(goToListIntent)
+
+        }
+
+        activityMainUiBinding.goOnlineImage.setOnClickListener {
+
+            val goToListIntent = Intent(this@MainActivity /*From Source Activity*/, OnlineGalleryActivity::class.java /*To Target Activity*/)
             goToListIntent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
 
             startActivity(goToListIntent)
