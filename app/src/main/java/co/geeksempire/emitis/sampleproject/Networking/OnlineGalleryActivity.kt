@@ -57,7 +57,8 @@ class OnlineGalleryActivity : AppCompatActivity() {
         // Convert To JSON Object
         val aJsonData = allJsonData[0] as JSONObject
 
-        val postTile = aJsonData.getJSONObject("title").getString("rendered")
+        // Extract Data from JSON Object
+        val postTile = aJsonData.getJSONObject("excerpt").getString("rendered")
 
         return@async postTile
     }
