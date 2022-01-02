@@ -6,6 +6,8 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import co.geeksempire.emitis.sampleproject.databinding.OnlineGalleryLayoutBinding
 import kotlinx.coroutines.*
+import org.json.JSONArray
+import org.json.JSONObject
 import java.net.URL
 
 class OnlineGalleryActivity : AppCompatActivity() {
@@ -23,6 +25,10 @@ class OnlineGalleryActivity : AppCompatActivity() {
 
             onlineGalleryLayoutBinding.onlineImageView.setImageBitmap(downloadedImage)
 
+            val downloadedTitle = downloadJson("https://abanabsalan.com/wp-json/wp/v2/posts?include[]=5877").await()
+
+            onlineGalleryLayoutBinding.onlineTitleText.text = downloadedTitle
+
         }
 
     }
@@ -38,13 +44,22 @@ class OnlineGalleryActivity : AppCompatActivity() {
         return@async imageBitmap
     }
 
-    fun downloadJson(jsonLink: String) = CoroutineScope(Dispatchers.IO).async {
+    fun downloadJson(jsonLink: String) : Deferred<String> = CoroutineScope(Dispatchers.IO).async {
 
         val rawBytes: ByteArray = URL(jsonLink).readBytes()
 
         // Convert Bytes To String
         val jsonString = String(rawBytes)
 
+        // Convert String To JSON
+        val allJsonData = JSONArray(jsonString)
+
+        // Convert To JSON Object
+        val aJsonData = allJsonData[0] as JSONObject
+
+        val postTile = aJsonData.getJSONObject("title").getString("rendered")
+
+        return@async postTile
     }
 
 }
