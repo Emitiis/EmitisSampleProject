@@ -32,9 +32,19 @@ class OnlineGalleryActivity : AppCompatActivity() {
 
         val rawBytes: ByteArray = URL(imageLink).readBytes()
 
+        // Convert Bytes To Image
         val imageBitmap = BitmapFactory.decodeByteArray(rawBytes, 0, rawBytes.size)
 
         return@async imageBitmap
+    }
+
+    fun downloadJson(jsonLink: String) = CoroutineScope(Dispatchers.IO).async {
+
+        val rawBytes: ByteArray = URL(jsonLink).readBytes()
+
+        // Convert Bytes To String
+        val jsonString = String(rawBytes)
+
     }
 
 }
