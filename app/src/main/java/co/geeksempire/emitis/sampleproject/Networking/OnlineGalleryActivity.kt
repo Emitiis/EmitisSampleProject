@@ -21,13 +21,15 @@ class OnlineGalleryActivity : AppCompatActivity() {
 
         CoroutineScope(Dispatchers.Main).launch {// Main Layer -> Can Access Views in Layout
 
-            val downloadedImage = downloadImage("https://i1.wp.com/abanabsalan.com/wp-content/uploads/2021/06/beautiful-Nail-Design.jpg").await()
-
-            onlineGalleryLayoutBinding.onlineImageView.setImageBitmap(downloadedImage)
-
             val downloadedTitle = downloadJson("https://abanabsalan.com/wp-json/wp/v2/posts?include[]=5877").await()
 
             onlineGalleryLayoutBinding.onlineTitleText.text = downloadedTitle
+
+
+
+            val downloadedImage = downloadImage("https://i1.wp.com/abanabsalan.com/wp-content/uploads/2021/06/beautiful-Nail-Design.jpg").await()
+
+            onlineGalleryLayoutBinding.onlineImageView.setImageBitmap(downloadedImage)
 
         }
 
