@@ -1,16 +1,25 @@
 package co.geeksempire.emitis.sampleproject.Networking
 
+import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import co.geeksempire.emitis.sampleproject.databinding.OnlineGalleryLayoutBinding
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.android.gms.common.api.ApiException
+import com.google.firebase.auth.GoogleAuthProvider
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.*
 import org.json.JSONArray
 import org.json.JSONObject
 import java.net.URL
 
 class OnlineGalleryActivity : AppCompatActivity() {
+
+    val auth = Firebase.auth
 
     lateinit var onlineGalleryLayoutBinding: OnlineGalleryLayoutBinding
 
@@ -33,7 +42,13 @@ class OnlineGalleryActivity : AppCompatActivity() {
 
         }
 
+        onlineGalleryLayoutBinding.googleSignUp.setOnClickListener {
+            invokeGoogleAccounts()
+        }
+
     }
+
+
 
     //Completely In IO Layer
     fun downloadImage(imageLink: String) : Deferred<Bitmap> = CoroutineScope(Dispatchers.IO).async {
@@ -63,6 +78,67 @@ class OnlineGalleryActivity : AppCompatActivity() {
         val postTile = aJsonData.getJSONObject("excerpt").getString("rendered")
 
         return@async postTile
+    }
+
+    fun invokeGoogleAccounts() {
+
+        val googleSignInOptions = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+            .requestIdToken("164207542361-i8u41pppnrqospuk1n5ebgachh5h34e5.apps.googleusercontent.com")
+            .requestEmail()
+            .build()
+
+        val googleSignInClient = GoogleSignIn.getClient(this, googleSignInOptions)
+
+        val signInIntent = googleSignInClient.signInIntent
+        startActivityForResult(signInIntent, 671)
+
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (requestCode == 671) {
+
+            GoogleSignIn.getSignedInAccountFromIntent(data).addOnCompleteListener { task ->
+
+                try {
+
+                    // Google Sign In was successful
+                    val googleAccount = task.getResult(ApiException::class.java)!!
+
+
+                    println(">>> Email Address: " + googleAccount.email)
+                    println(">>> Name: " + googleAccount.displayName)
+                    println(">>> Photo Link: " + googleAccount.photoUrl)
+
+                    firebaseAuthWithGoogle(googleAccount.idToken!!)
+
+                } catch (e: ApiException) {
+                    e.printStackTrace()
+
+
+                }
+
+            }
+
+        }
+    }
+
+    private fun firebaseAuthWithGoogle(idToken: String) {
+        val credential = GoogleAuthProvider.getCredential(idToken, null)
+        auth.signInWithCredential(credential)
+            .addOnCompleteListener(this) { task ->
+                if (task.isSuccessful) {
+                    // Sign in success, update UI with the signed-in user's information
+                    val user = auth.currentUser
+
+
+                } else {
+
+                // If sign in fails, display a message to the user.
+
+                }
+            }
     }
 
 }

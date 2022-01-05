@@ -23,4 +23,9 @@
 
         apps:layout_constraintTop_toBottomOf="@id/onlineImageView"/>
 
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/googleSignUp"
+        android:layout_width="159dp"
+        android:layout_height="53dp"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
