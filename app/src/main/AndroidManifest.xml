@@ -35,6 +35,9 @@
         <activity
             android:name=".Networking.OnlineGalleryActivity"/>
 
+        <activity
+            android:name=".FirestoreDatabase.FirestoreActivity"/>
+
     </application>
 
 </manifest>

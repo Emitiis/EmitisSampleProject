@@ -1,5 +1,8 @@
 package co.geeksempire.emitis.sampleproject
 
+/**
+ * Explanation of This Class
+ **/
 class KotlinOverview /*(var firstInputNumber: Int, var  secondInputNumber: Int)*/{
 
     companion object {
@@ -34,6 +37,9 @@ class KotlinOverview /*(var firstInputNumber: Int, var  secondInputNumber: Int)*
     var mathOperation: String = ""
 
     // A Function To Sum Up Two Numbers
+    /**
+     * Explanation of This Class
+     **/
     fun sumUpNumbers(firstInputNumber: Int, secondInputNumber: Int) : Int /* Return Result As A Number */ {
 
         val result = (firstInputNumber + secondInputNumber)
