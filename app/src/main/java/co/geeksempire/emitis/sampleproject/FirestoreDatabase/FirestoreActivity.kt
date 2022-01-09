@@ -52,6 +52,10 @@ class FirestoreActivity : AppCompatActivity() {
 
                         firestoreAdapter.notifyItemInserted(firestoreAdapter.inputSimpleListData.size /* Last Position */)
 
+                        val scrollPosition = firestoreAdapter.inputSimpleListData.size - 1
+
+                        firestoreLayoutBinding.messagesRecyclerView.smoothScrollToPosition(scrollPosition)
+
                     }
 
                 }.addOnFailureListener {
@@ -73,7 +77,8 @@ class FirestoreActivity : AppCompatActivity() {
 
                 firestoreAdapter.notifyDataSetChanged()
 
-                linearLayoutManager.scrollToPosition(firestoreAdapter.inputSimpleListData.size)
+                val scrollPosition = firestoreAdapter.inputSimpleListData.size - 1
+                linearLayoutManager.scrollToPosition(scrollPosition)
 
             }.addOnFailureListener {
 

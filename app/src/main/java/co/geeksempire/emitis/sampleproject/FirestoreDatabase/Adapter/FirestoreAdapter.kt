@@ -22,8 +22,6 @@ class FirestoreAdapter (private val context: AppCompatActivity) : RecyclerView.A
 
     override fun onBindViewHolder(firestoreViewHolder: FirestoreViewHolder, position: Int) {
 
-        println("$position" + ". " + inputSimpleListData[position])
-
         firestoreViewHolder.userMessageTextView.text = inputSimpleListData[position].get("messageContent").toString()
 
     }
