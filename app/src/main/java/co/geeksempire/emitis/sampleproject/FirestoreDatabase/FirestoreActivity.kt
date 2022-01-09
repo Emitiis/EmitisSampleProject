@@ -2,6 +2,9 @@ package co.geeksempire.emitis.sampleproject.FirestoreDatabase
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import co.geeksempire.emitis.sampleproject.FirestoreDatabase.Adapter.FirestoreAdapter
 import co.geeksempire.emitis.sampleproject.databinding.FirestoreLayoutBinding
 import com.google.firebase.Timestamp
 import com.google.firebase.firestore.ktx.firestore
@@ -21,10 +24,17 @@ class FirestoreActivity : AppCompatActivity() {
         firestoreLayoutBinding = FirestoreLayoutBinding.inflate(layoutInflater)
         setContentView(firestoreLayoutBinding.root)
 
+        val firestoreAdapter = FirestoreAdapter(this@FirestoreActivity)
+
+        firestoreLayoutBinding.messagesRecyclerView.layoutManager = LinearLayoutManager(applicationContext, RecyclerView.VERTICAL, false)
+        firestoreLayoutBinding.messagesRecyclerView.adapter = firestoreAdapter
+
         firestoreLayoutBinding.sendMessageView.setOnClickListener {
 
             val enteredTextMessage = firestoreLayoutBinding.firestoreText.text.toString()
 
+
+            // Send Data to Server
             Firebase.firestore
                 .collection("/StickerMessenger/Conversations/SauronWithElias")
                 .add(MessageDataStructure(
@@ -32,11 +42,30 @@ class FirestoreActivity : AppCompatActivity() {
                     messageTime = Timestamp.now()
                 )).addOnSuccessListener {
 
+                    firestoreLayoutBinding.firestoreText.setText("")
+
                 }.addOnFailureListener {
 
                 }
 
         }
+
+        // Download New Data (Get List Of Messages) & Show It In A RecyclerView
+        Firebase.firestore
+            .collection("/StickerMessenger/Conversations/SauronWithElias")
+            .orderBy("messageTime")
+            .get().addOnSuccessListener { querySnapshot ->
+
+                // After Data Sent Successfully -> Download New Data (Get List Of Messages) & Show It In A RecyclerView
+
+                firestoreAdapter.inputSimpleListData.clear()
+                firestoreAdapter.inputSimpleListData.addAll(querySnapshot.documents)
+
+                firestoreAdapter.notifyDataSetChanged()
+
+            }.addOnFailureListener {
+
+            }
 
     }
 

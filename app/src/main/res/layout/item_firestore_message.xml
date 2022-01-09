@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:apps="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="23dp"
+    android:background="#80FF00">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/userImageView"
+        android:layout_width="77dp"
+        android:layout_height="77dp"
+        android:background="@color/pink"
+        android:src="@drawable/minions"
+
+        apps:layout_constraintTop_toTopOf="parent"
+        apps:layout_constraintStart_toStartOf="parent"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/userMessageTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="13dp"
+        android:paddingVertical="7dp"
+        android:text="A Message"
+        android:textColor="@color/pink"
+        android:textSize="17sp"
+
+        apps:layout_constraintTop_toTopOf="parent"
+        apps:layout_constraintStart_toEndOf="@id/userImageView"
+        apps:layout_constraintEnd_toEndOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
