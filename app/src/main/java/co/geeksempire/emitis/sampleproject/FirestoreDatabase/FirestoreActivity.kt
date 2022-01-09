@@ -52,9 +52,6 @@ class FirestoreActivity : AppCompatActivity() {
 
                         firestoreAdapter.notifyItemInserted(firestoreAdapter.inputSimpleListData.size /* Last Position */)
 
-
-                        linearLayoutManager.scrollToPosition(firestoreAdapter.inputSimpleListData.size)
-
                     }
 
                 }.addOnFailureListener {
