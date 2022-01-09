@@ -24,9 +24,10 @@ class FirestoreActivity : AppCompatActivity() {
         firestoreLayoutBinding = FirestoreLayoutBinding.inflate(layoutInflater)
         setContentView(firestoreLayoutBinding.root)
 
-        val firestoreAdapter = FirestoreAdapter(this@FirestoreActivity)
+        val linearLayoutManager = LinearLayoutManager(applicationContext, RecyclerView.VERTICAL, false)
+        firestoreLayoutBinding.messagesRecyclerView.layoutManager = linearLayoutManager
 
-        firestoreLayoutBinding.messagesRecyclerView.layoutManager = LinearLayoutManager(applicationContext, RecyclerView.VERTICAL, false)
+        val firestoreAdapter = FirestoreAdapter(this@FirestoreActivity)
         firestoreLayoutBinding.messagesRecyclerView.adapter = firestoreAdapter
 
         firestoreLayoutBinding.sendMessageView.setOnClickListener {
@@ -40,9 +41,21 @@ class FirestoreActivity : AppCompatActivity() {
                 .add(MessageDataStructure(
                     messageContent = enteredTextMessage,
                     messageTime = Timestamp.now()
-                )).addOnSuccessListener {
+                )).addOnSuccessListener { documentReference /* Reference To Sent Message */ ->
 
                     firestoreLayoutBinding.firestoreText.setText("")
+
+                    // Get Information Of Sent Message
+                    documentReference.get().addOnSuccessListener { documentSnapshot /* Snapshot (= All Data) Of Sent Message */  ->
+
+                        firestoreAdapter.inputSimpleListData.add(documentSnapshot)
+
+                        firestoreAdapter.notifyItemInserted(firestoreAdapter.inputSimpleListData.size /* Last Position */)
+
+
+                        linearLayoutManager.scrollToPosition(firestoreAdapter.inputSimpleListData.size)
+
+                    }
 
                 }.addOnFailureListener {
 
@@ -62,6 +75,8 @@ class FirestoreActivity : AppCompatActivity() {
                 firestoreAdapter.inputSimpleListData.addAll(querySnapshot.documents)
 
                 firestoreAdapter.notifyDataSetChanged()
+
+                linearLayoutManager.scrollToPosition(firestoreAdapter.inputSimpleListData.size)
 
             }.addOnFailureListener {
 
