@@ -72,7 +72,11 @@ class FirestoreActivity : AppCompatActivity() {
 
                 // After Data Sent Successfully -> Download New Data (Get List Of Messages) & Show It In A RecyclerView
 
-                firestoreAdapter.inputSimpleListData.clear()
+
+                if (firestoreAdapter.inputSimpleListData.isNotEmpty()) {
+                    firestoreAdapter.inputSimpleListData.clear() // Clear All Existed Data To Avoid Duplication
+                }
+
                 firestoreAdapter.inputSimpleListData.addAll(querySnapshot.documents)
 
                 firestoreAdapter.notifyDataSetChanged()
