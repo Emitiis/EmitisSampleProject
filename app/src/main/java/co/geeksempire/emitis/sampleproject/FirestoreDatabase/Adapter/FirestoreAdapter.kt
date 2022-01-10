@@ -1,10 +1,8 @@
 package co.geeksempire.emitis.sampleproject.FirestoreDatabase.Adapter
 
-import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
-import co.geeksempire.emitis.sampleproject.R
 import co.geeksempire.emitis.sampleproject.databinding.ItemFirestoreMessageBinding
 import co.geeksempire.emitis.sampleproject.databinding.ItemFirestoreMessageOthersBinding
 import com.google.firebase.auth.ktx.auth
@@ -65,24 +63,14 @@ class FirestoreAdapter (private val context: AppCompatActivity) : RecyclerView.A
 
             val initialViewHolder = (genericViewHolder as FirestoreViewHolder)
 
-            //Background Green
-            initialViewHolder.rootItemView.setBackgroundColor(context.getColor(R.color.green))
-
             initialViewHolder.userMessageTextView.text = inputSimpleListData[position].get("messageContent").toString()
-
-            initialViewHolder.userImageView.visibility = View.VISIBLE
 
         } else {
             //Other
 
             val initialViewHolder = (genericViewHolder as FirestoreViewHolderOthers)
 
-            //Background Gray
-            initialViewHolder.rootItemView.setBackgroundColor(context.getColor(R.color.design_default_color_primary))
-
             initialViewHolder.userMessageTextView.text = inputSimpleListData[position].get("messageContent").toString()
-
-            initialViewHolder.userImageView.visibility = View.INVISIBLE
 
         }
 
