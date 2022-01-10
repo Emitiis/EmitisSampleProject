@@ -67,11 +67,34 @@ class FirestoreActivity : AppCompatActivity() {
 
         }
 
-        // Download New Data (Get List Of Messages) & Show It In A RecyclerView
+        // Download New Data Once (Get List Of Messages) & Show It In A RecyclerView
+//        Firebase.firestore
+//            .collection("/StickerMessenger/Conversations/SauronWithElias")
+//            .orderBy("messageTime")
+//            .get().addOnSuccessListener { querySnapshot ->
+//
+//                // After Data Sent Successfully -> Download New Data (Get List Of Messages) & Show It In A RecyclerView
+//
+//                if (firestoreAdapter.inputSimpleListData.isNotEmpty()) {
+//                    firestoreAdapter.inputSimpleListData.clear() // Clear All Existed Data To Avoid Duplication
+//                }
+//
+//                firestoreAdapter.inputSimpleListData.addAll(querySnapshot.documents)
+//
+//                firestoreAdapter.notifyDataSetChanged()
+//
+//                val scrollPosition = firestoreAdapter.inputSimpleListData.size - 1
+//                linearLayoutManager.scrollToPosition(scrollPosition)
+//
+//            }.addOnFailureListener {
+//
+//            }
+
+        // Download New Data For Each Changes
         Firebase.firestore
             .collection("/StickerMessenger/Conversations/SauronWithElias")
             .orderBy("messageTime")
-            .get().addOnSuccessListener { querySnapshot ->
+            .addSnapshotListener { querySnapshot, error ->
 
                 // After Data Sent Successfully -> Download New Data (Get List Of Messages) & Show It In A RecyclerView
 
@@ -79,14 +102,12 @@ class FirestoreActivity : AppCompatActivity() {
                     firestoreAdapter.inputSimpleListData.clear() // Clear All Existed Data To Avoid Duplication
                 }
 
-                firestoreAdapter.inputSimpleListData.addAll(querySnapshot.documents)
+                firestoreAdapter.inputSimpleListData.addAll(querySnapshot!!.documents)
 
                 firestoreAdapter.notifyDataSetChanged()
 
                 val scrollPosition = firestoreAdapter.inputSimpleListData.size - 1
                 linearLayoutManager.scrollToPosition(scrollPosition)
-
-            }.addOnFailureListener {
 
             }
 
