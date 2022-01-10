@@ -7,15 +7,19 @@ import androidx.recyclerview.widget.RecyclerView
 import co.geeksempire.emitis.sampleproject.FirestoreDatabase.Adapter.FirestoreAdapter
 import co.geeksempire.emitis.sampleproject.databinding.FirestoreLayoutBinding
 import com.google.firebase.Timestamp
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
 data class MessageDataStructure (
     var messageContent: String,
-    var messageTime: Timestamp
+    var messageTime: Timestamp,
+    var userId: String
 )
 
 class FirestoreActivity : AppCompatActivity() {
+
+    val firebaseUser = Firebase.auth.currentUser!! // !! Two Exclamations Mark Means I Asserted
 
     lateinit var firestoreLayoutBinding: FirestoreLayoutBinding
 
@@ -34,13 +38,13 @@ class FirestoreActivity : AppCompatActivity() {
 
             val enteredTextMessage = firestoreLayoutBinding.firestoreText.text.toString()
 
-
             // Send Data to Server
             Firebase.firestore
                 .collection("/StickerMessenger/Conversations/SauronWithElias")
                 .add(MessageDataStructure(
                     messageContent = enteredTextMessage,
-                    messageTime = Timestamp.now()
+                    messageTime = Timestamp.now(),
+                    userId = firebaseUser.uid
                 )).addOnSuccessListener { documentReference /* Reference To Sent Message */ ->
 
                     firestoreLayoutBinding.firestoreText.setText("")
@@ -53,7 +57,6 @@ class FirestoreActivity : AppCompatActivity() {
                         firestoreAdapter.notifyItemInserted(firestoreAdapter.inputSimpleListData.size /* Last Position */)
 
                         val scrollPosition = firestoreAdapter.inputSimpleListData.size - 1
-
                         firestoreLayoutBinding.messagesRecyclerView.smoothScrollToPosition(scrollPosition)
 
                     }
@@ -71,7 +74,6 @@ class FirestoreActivity : AppCompatActivity() {
             .get().addOnSuccessListener { querySnapshot ->
 
                 // After Data Sent Successfully -> Download New Data (Get List Of Messages) & Show It In A RecyclerView
-
 
                 if (firestoreAdapter.inputSimpleListData.isNotEmpty()) {
                     firestoreAdapter.inputSimpleListData.clear() // Clear All Existed Data To Avoid Duplication
