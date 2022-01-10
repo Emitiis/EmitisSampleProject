@@ -7,7 +7,6 @@ class FirestoreViewHolder (itemFirestoreMessageBinding: ItemFirestoreMessageBind
     val rootItemView = itemFirestoreMessageBinding.rootItemView
 
     val userImageView = itemFirestoreMessageBinding.userImageView
-    val userImageViewOthers = itemFirestoreMessageBinding.userImageViewOthers
 
     val userMessageTextView = itemFirestoreMessageBinding.userMessageTextView
 }

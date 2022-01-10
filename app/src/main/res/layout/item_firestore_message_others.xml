@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginTop="23dp"
-    android:background="@color/green">
+    android:background="@color/gray">
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/userImageView"
