@@ -34,10 +34,14 @@ class FirestoreAdapter (private val context: AppCompatActivity) : RecyclerView.A
             //Background Green
             firestoreViewHolder.rootItemView.setBackgroundColor(context.getColor(R.color.green))
 
+
+
         } else {
 
             //Background Gray
             firestoreViewHolder.rootItemView.setBackgroundColor(context.getColor(R.color.gray))
+
+
 
         }
 
