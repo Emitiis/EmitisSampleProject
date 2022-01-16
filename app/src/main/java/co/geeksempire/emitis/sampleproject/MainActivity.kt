@@ -3,10 +3,12 @@ package co.geeksempire.emitis.sampleproject
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
+import android.provider.ContactsContract
 import androidx.appcompat.app.AppCompatActivity
 import co.geeksempire.emitis.sampleproject.FirestoreDatabase.FirestoreActivity
 import co.geeksempire.emitis.sampleproject.Networking.OnlineGalleryActivity
 import co.geeksempire.emitis.sampleproject.databinding.ActivityMainUiBinding
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -280,6 +282,38 @@ class MainActivity : AppCompatActivity() {
             activityMainUiBinding.root.setBackgroundColor(Color.BLACK)
 
             buttonPressed = false
+
+        }
+
+    }
+
+    companion object {
+        val PERMISSIONS_REQUEST_READ_CONTACTS = 100
+    }
+
+    private fun getContacts() {
+
+        val nameList = ArrayList<String>()
+
+        val contentResolver = getContentResolver();
+
+        val cursor = contentResolver.query(ContactsContract.Contacts.CONTENT_URI,
+            null, null, null, null);
+
+        if (cursor != null && cursor.count > 0) {
+
+            while (cursor.moveToNext()) {
+
+                try {
+
+                    var id = cursor.getString(cursor.getColumnIndexOrThrow(ContactsContract.Contacts._ID))
+
+                } catch (e: Exception) {
+                    e.printStackTrace()
+
+                }
+
+            }
 
         }
 

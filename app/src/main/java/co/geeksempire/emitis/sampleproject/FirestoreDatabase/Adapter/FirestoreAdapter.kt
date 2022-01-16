@@ -13,12 +13,15 @@ class FirestoreAdapter (private val context: AppCompatActivity) : RecyclerView.A
 
     val inputSimpleListData: ArrayList<DocumentSnapshot> = ArrayList<DocumentSnapshot>()
 
+    val MyselfLayoutType = 1
+    val FriendLayoutType = 2
+
     override fun getItemCount(): Int {
 
         return inputSimpleListData.size
     }
 
-    override fun getItemViewType(position: Int): Int {
+    override fun getItemViewType(position: Int): Int /* Return An Integer To Define Types Of Views */ {
         super.getItemViewType(position)
 
         val firebaseUserId = inputSimpleListData[position].get("userId")
@@ -26,24 +29,23 @@ class FirestoreAdapter (private val context: AppCompatActivity) : RecyclerView.A
         return if (firebaseUserId == Firebase.auth.currentUser!!.uid) {
             //Myself
 
-            1
+            MyselfLayoutType
 
         } else {
             //Others
 
-            2
+            FriendLayoutType
 
         }
     }
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
 
-
-        return if (viewType == 1) {// 1 == //viewType -> Our Messages
+        return if (viewType == MyselfLayoutType) {// 1 == //viewType -> Our Messages
 
             FirestoreViewHolder(ItemFirestoreMessageBinding.inflate(context.layoutInflater, viewGroup, false))
 
-        } else if (viewType == 2) {// 2 == //viewType -> Others Messages
+        } else if (viewType == FriendLayoutType) {// 2 == //viewType -> Others Messages
 
             FirestoreViewHolderOthers(ItemFirestoreMessageOthersBinding.inflate(context.layoutInflater, viewGroup, false))
 
