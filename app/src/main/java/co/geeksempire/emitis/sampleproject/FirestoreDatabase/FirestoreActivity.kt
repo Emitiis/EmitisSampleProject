@@ -70,7 +70,6 @@ class FirestoreActivity : AppCompatActivity() {
 
         }
 
-
     }
 
     override fun onStart() {
