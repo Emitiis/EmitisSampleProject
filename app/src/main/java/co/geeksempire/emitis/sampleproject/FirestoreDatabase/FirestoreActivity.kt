@@ -34,7 +34,7 @@ class FirestoreActivity : AppCompatActivity() {
         val linearLayoutManager = LinearLayoutManager(applicationContext, RecyclerView.VERTICAL, false)
         firestoreLayoutBinding.messagesRecyclerView.layoutManager = linearLayoutManager
 
-        val query: Query = FirebaseFirestore.getInstance()
+        val query: Query = Firebase.firestore
             .collection("/StickerMessenger/Conversations/SauronWithElias")
             .orderBy("messageTime")
 
