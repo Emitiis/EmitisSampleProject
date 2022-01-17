@@ -3,15 +3,17 @@ package co.geeksempire.emitis.sampleproject.FirestoreDatabase.Adapter
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
+import co.geeksempire.emitis.sampleproject.FirestoreDatabase.MessageDataStructure
 import co.geeksempire.emitis.sampleproject.databinding.ItemFirestoreMessageBinding
 import co.geeksempire.emitis.sampleproject.databinding.ItemFirestoreMessageOthersBinding
+import com.firebase.ui.firestore.FirestoreRecyclerAdapter
+import com.firebase.ui.firestore.FirestoreRecyclerOptions
 import com.google.firebase.auth.ktx.auth
-import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.ktx.Firebase
 
-class FirestoreAdapter (private val context: AppCompatActivity) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class FirestoreAdapter (private val context: AppCompatActivity, firestoreRecyclerOptions: FirestoreRecyclerOptions<MessageDataStructure>) : FirestoreRecyclerAdapter<MessageDataStructure, RecyclerView.ViewHolder>(firestoreRecyclerOptions) {
 
-    val inputSimpleListData: ArrayList<DocumentSnapshot> = ArrayList<DocumentSnapshot>()
+    val inputSimpleListData: ArrayList<MessageDataStructure> = ArrayList<MessageDataStructure>()
 
     val MyselfLayoutType = 1
     val FriendLayoutType = 2
@@ -24,7 +26,7 @@ class FirestoreAdapter (private val context: AppCompatActivity) : RecyclerView.A
     override fun getItemViewType(position: Int): Int /* Return An Integer To Define Types Of Views */ {
         super.getItemViewType(position)
 
-        val firebaseUserId = inputSimpleListData[position].get("userId")
+        val firebaseUserId = inputSimpleListData[position].userId
 
         return if (firebaseUserId == Firebase.auth.currentUser!!.uid) {
             //Myself
@@ -56,23 +58,23 @@ class FirestoreAdapter (private val context: AppCompatActivity) : RecyclerView.A
         }
     }
 
-    override fun onBindViewHolder(genericViewHolder: RecyclerView.ViewHolder, position: Int) {
+    override fun onBindViewHolder(genericViewHolder: RecyclerView.ViewHolder, position: Int, messageDataStructure: MessageDataStructure) {
 
-        val firebaseUserId = inputSimpleListData[position].get("userId")
+        val firebaseUserId = messageDataStructure.userId
 
         if (firebaseUserId == Firebase.auth.currentUser!!.uid) {
             //Myself
 
             val initialViewHolder = (genericViewHolder as FirestoreViewHolder)
 
-            initialViewHolder.userMessageTextView.text = inputSimpleListData[position].get("messageContent").toString()
+            initialViewHolder.userMessageTextView.text = messageDataStructure.messageContent
 
         } else {
             //Other
 
             val initialViewHolder = (genericViewHolder as FirestoreViewHolderOthers)
 
-            initialViewHolder.userMessageTextView.text = inputSimpleListData[position].get("messageContent").toString()
+            initialViewHolder.userMessageTextView.text = messageDataStructure.messageContent
 
         }
 

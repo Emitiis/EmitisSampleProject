@@ -49,6 +49,7 @@ class ListOfDataActivity : AppCompatActivity() {
 
             })
 
+//        listDataLayoutBinding.dataRecyclerView.layoutManager = LinearLayoutManager(applicationContext, RecyclerView.HORIZONTAL, false)
         listDataLayoutBinding.dataRecyclerView.layoutManager = LinearLayoutManager(applicationContext, RecyclerView.HORIZONTAL, false)
         listDataLayoutBinding.dataRecyclerView.adapter = simpleAdapter
 

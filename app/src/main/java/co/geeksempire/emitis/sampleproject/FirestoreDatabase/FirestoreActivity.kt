@@ -6,10 +6,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import co.geeksempire.emitis.sampleproject.FirestoreDatabase.Adapter.FirestoreAdapter
 import co.geeksempire.emitis.sampleproject.databinding.FirestoreLayoutBinding
+import com.firebase.ui.firestore.FirestoreRecyclerOptions
 import com.google.firebase.Timestamp
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.*
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+
 
 data class MessageDataStructure (
     var messageContent: String,
@@ -31,7 +34,15 @@ class FirestoreActivity : AppCompatActivity() {
         val linearLayoutManager = LinearLayoutManager(applicationContext, RecyclerView.VERTICAL, false)
         firestoreLayoutBinding.messagesRecyclerView.layoutManager = linearLayoutManager
 
-        val firestoreAdapter = FirestoreAdapter(this@FirestoreActivity)
+        val query: Query = FirebaseFirestore.getInstance()
+            .collection("/StickerMessenger/Conversations/SauronWithElias")
+            .orderBy("messageTime")
+
+        val firestoreRecyclerOptions: FirestoreRecyclerOptions<MessageDataStructure> = FirestoreRecyclerOptions.Builder<MessageDataStructure>()
+            .setQuery(query, MessageDataStructure::class.java)
+            .build()
+
+        val firestoreAdapter = FirestoreAdapter(this@FirestoreActivity, firestoreRecyclerOptions)
         firestoreLayoutBinding.messagesRecyclerView.adapter = firestoreAdapter
 
         firestoreLayoutBinding.sendMessageView.setOnClickListener {
@@ -39,8 +50,12 @@ class FirestoreActivity : AppCompatActivity() {
             val enteredTextMessage = firestoreLayoutBinding.firestoreText.text.toString()
 
             // Send Data to Server
+
+            var conversationId = "SauronWithElias" // After Sort
+            conversationId = "EliasWithSauron"
+
             Firebase.firestore
-                .collection("/StickerMessenger/Conversations/SauronWithElias")
+                .collection("/StickerMessenger/Conversations/${conversationId}")
                 .add(MessageDataStructure(
                     messageContent = enteredTextMessage,
                     messageTime = Timestamp.now(),
@@ -49,67 +64,13 @@ class FirestoreActivity : AppCompatActivity() {
 
                     firestoreLayoutBinding.firestoreText.setText("")
 
-                    // Get Information Of Sent Message
-                    documentReference.get().addOnSuccessListener { documentSnapshot /* Snapshot (= All Data) Of Sent Message */  ->
-
-                        firestoreAdapter.inputSimpleListData.add(documentSnapshot)
-
-                        firestoreAdapter.notifyItemInserted(firestoreAdapter.inputSimpleListData.size /* Last Position */)
-
-                        val scrollPosition = firestoreAdapter.inputSimpleListData.size - 1
-                        firestoreLayoutBinding.messagesRecyclerView.smoothScrollToPosition(scrollPosition)
-
-                    }
-
                 }.addOnFailureListener {
 
                 }
 
         }
 
-        // Download New Data Once (Get List Of Messages) & Show It In A RecyclerView
-//        Firebase.firestore
-//            .collection("/StickerMessenger/Conversations/SauronWithElias")
-//            .orderBy("messageTime")
-//            .get().addOnSuccessListener { querySnapshot ->
-//
-//                // After Data Sent Successfully -> Download New Data (Get List Of Messages) & Show It In A RecyclerView
-//
-//                if (firestoreAdapter.inputSimpleListData.isNotEmpty()) {
-//                    firestoreAdapter.inputSimpleListData.clear() // Clear All Existed Data To Avoid Duplication
-//                }
-//
-//                firestoreAdapter.inputSimpleListData.addAll(querySnapshot.documents)
-//
-//                firestoreAdapter.notifyDataSetChanged()
-//
-//                val scrollPosition = firestoreAdapter.inputSimpleListData.size - 1
-//                linearLayoutManager.scrollToPosition(scrollPosition)
-//
-//            }.addOnFailureListener {
-//
-//            }
-
-        // Download New Data For Each Changes
-        Firebase.firestore
-            .collection("/StickerMessenger/Conversations/SauronWithElias")
-            .orderBy("messageTime")
-            .addSnapshotListener { querySnapshot, error ->
-
-                // After Data Sent Successfully -> Download New Data (Get List Of Messages) & Show It In A RecyclerView
-
-                if (firestoreAdapter.inputSimpleListData.isNotEmpty()) {
-                    firestoreAdapter.inputSimpleListData.clear() // Clear All Existed Data To Avoid Duplication
-                }
-
-                firestoreAdapter.inputSimpleListData.addAll(querySnapshot!!.documents)
-
-                firestoreAdapter.notifyDataSetChanged()
-
-                val scrollPosition = firestoreAdapter.inputSimpleListData.size - 1
-                linearLayoutManager.scrollToPosition(scrollPosition)
-
-            }
+        firestoreAdapter.startListening()
 
     }
 
