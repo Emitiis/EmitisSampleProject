@@ -24,6 +24,16 @@ class FirestoreActivity : AppCompatActivity() {
 
     val firebaseUser = Firebase.auth.currentUser!! // !! Two Exclamations Mark Means I Asserted
 
+    val query: Query = Firebase.firestore
+        .collection("/StickerMessenger/Conversations/SauronWithElias")
+//        .orderBy("messageTime")
+
+    val firestoreRecyclerOptions: FirestoreRecyclerOptions<MessageDataStructure> = FirestoreRecyclerOptions.Builder<MessageDataStructure>()
+        .setQuery(query, MessageDataStructure::class.java)
+        .build()
+
+    val firestoreAdapter = FirestoreAdapter(this@FirestoreActivity, firestoreRecyclerOptions)
+
     lateinit var firestoreLayoutBinding: FirestoreLayoutBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,15 +44,6 @@ class FirestoreActivity : AppCompatActivity() {
         val linearLayoutManager = LinearLayoutManager(applicationContext, RecyclerView.VERTICAL, false)
         firestoreLayoutBinding.messagesRecyclerView.layoutManager = linearLayoutManager
 
-        val query: Query = Firebase.firestore
-            .collection("/StickerMessenger/Conversations/SauronWithElias")
-            .orderBy("messageTime")
-
-        val firestoreRecyclerOptions: FirestoreRecyclerOptions<MessageDataStructure> = FirestoreRecyclerOptions.Builder<MessageDataStructure>()
-            .setQuery(query, MessageDataStructure::class.java)
-            .build()
-
-        val firestoreAdapter = FirestoreAdapter(this@FirestoreActivity, firestoreRecyclerOptions)
         firestoreLayoutBinding.messagesRecyclerView.adapter = firestoreAdapter
 
         firestoreLayoutBinding.sendMessageView.setOnClickListener {
@@ -52,7 +53,6 @@ class FirestoreActivity : AppCompatActivity() {
             // Send Data to Server
 
             var conversationId = "SauronWithElias" // After Sort
-            conversationId = "EliasWithSauron"
 
             Firebase.firestore
                 .collection("/StickerMessenger/Conversations/${conversationId}")
@@ -70,7 +70,20 @@ class FirestoreActivity : AppCompatActivity() {
 
         }
 
+
+    }
+
+    override fun onStart() {
+        super.onStart()
+
         firestoreAdapter.startListening()
+
+    }
+
+    override fun onPause() {
+        super.onPause()
+
+        firestoreAdapter.stopListening()
 
     }
 

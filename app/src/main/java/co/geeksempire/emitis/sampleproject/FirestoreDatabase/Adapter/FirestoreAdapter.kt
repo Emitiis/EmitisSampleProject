@@ -60,6 +60,8 @@ class FirestoreAdapter (private val context: AppCompatActivity, firestoreRecycle
 
     override fun onBindViewHolder(genericViewHolder: RecyclerView.ViewHolder, position: Int, messageDataStructure: MessageDataStructure) {
 
+        println(">>>>>>>>>>>>>>>>> " + messageDataStructure.messageContent)
+
         val firebaseUserId = messageDataStructure.userId
 
         if (firebaseUserId == Firebase.auth.currentUser!!.uid) {
