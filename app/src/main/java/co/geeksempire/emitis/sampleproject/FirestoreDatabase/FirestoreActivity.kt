@@ -13,13 +13,6 @@ import com.google.firebase.firestore.*
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
-
-data class MessageDataStructure (
-    var messageContent: String,
-    var messageTime: Timestamp,
-    var userId: String
-)
-
 class FirestoreActivity : AppCompatActivity() {
 
     val firebaseUser = Firebase.auth.currentUser!! // !! Two Exclamations Mark Means I Asserted
@@ -72,8 +65,8 @@ class FirestoreActivity : AppCompatActivity() {
 
     }
 
-    override fun onStart() {
-        super.onStart()
+    override fun onResume() {
+        super.onResume()
 
         firestoreAdapter.startListening()
 

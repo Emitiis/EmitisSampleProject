@@ -9,24 +9,23 @@ import co.geeksempire.emitis.sampleproject.databinding.ItemFirestoreMessageOther
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter
 import com.firebase.ui.firestore.FirestoreRecyclerOptions
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.FirebaseFirestoreException
 import com.google.firebase.ktx.Firebase
 
 class FirestoreAdapter (private val context: AppCompatActivity, firestoreRecyclerOptions: FirestoreRecyclerOptions<MessageDataStructure>) : FirestoreRecyclerAdapter<MessageDataStructure, RecyclerView.ViewHolder>(firestoreRecyclerOptions) {
-
-    val inputSimpleListData: ArrayList<MessageDataStructure> = ArrayList<MessageDataStructure>()
 
     val MyselfLayoutType = 1
     val FriendLayoutType = 2
 
     override fun getItemCount(): Int {
 
-        return inputSimpleListData.size
+        return snapshots.size
     }
 
     override fun getItemViewType(position: Int): Int /* Return An Integer To Define Types Of Views */ {
         super.getItemViewType(position)
 
-        val firebaseUserId = inputSimpleListData[position].userId
+        val firebaseUserId = snapshots[position].userId
 
         return if (firebaseUserId == Firebase.auth.currentUser!!.uid) {
             //Myself
@@ -60,7 +59,7 @@ class FirestoreAdapter (private val context: AppCompatActivity, firestoreRecycle
 
     override fun onBindViewHolder(genericViewHolder: RecyclerView.ViewHolder, position: Int, messageDataStructure: MessageDataStructure) {
 
-        println(">>>>>>>>>>>>>>>>> " + messageDataStructure.messageContent)
+        println("" + messageDataStructure.messageTime)
 
         val firebaseUserId = messageDataStructure.userId
 
@@ -80,6 +79,14 @@ class FirestoreAdapter (private val context: AppCompatActivity, firestoreRecycle
 
         }
 
+    }
+
+    override fun onDataChanged() {
+        super.onDataChanged()
+    }
+
+    override fun onError(firebaseFirestoreException: FirebaseFirestoreException) {
+        super.onError(firebaseFirestoreException)
     }
 
 }
