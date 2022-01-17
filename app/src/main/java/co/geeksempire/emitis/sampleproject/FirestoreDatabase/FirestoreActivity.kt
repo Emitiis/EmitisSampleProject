@@ -26,7 +26,7 @@ class FirestoreActivity : AppCompatActivity() {
 
     val query: Query = Firebase.firestore
         .collection("/StickerMessenger/Conversations/SauronWithElias")
-//        .orderBy("messageTime")
+        .orderBy("messageTime")
 
     val firestoreRecyclerOptions: FirestoreRecyclerOptions<MessageDataStructure> = FirestoreRecyclerOptions.Builder<MessageDataStructure>()
         .setQuery(query, MessageDataStructure::class.java)
