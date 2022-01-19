@@ -44,8 +44,7 @@ class FirestoreActivity : AppCompatActivity() {
             val enteredTextMessage = firestoreLayoutBinding.firestoreText.text.toString()
 
             // Send Data to Server
-
-            var conversationId = "SauronWithElias" // After Sort
+            val conversationId = "SauronWithElias" // After Sort
 
             Firebase.firestore
                 .collection("/StickerMessenger/Conversations/${conversationId}")
