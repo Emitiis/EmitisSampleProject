@@ -1,0 +1,35 @@
+/*
+ * Copyright © 2021 By Geeks Empire.
+ *
+ * Created by Elias Fazel
+ * Last modified 12/8/21, 10:26 AM
+ *
+ * Licensed Under MIT License.
+ * https://opensource.org/licenses/MIT
+ */
+
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 31
+    buildToolsVersion '30.0.3'
+
+    defaultConfig {
+        minSdkVersion 24
+        targetSdkVersion 31
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+
+    implementation 'androidx.appcompat:appcompat:1.4.0'
+
+}

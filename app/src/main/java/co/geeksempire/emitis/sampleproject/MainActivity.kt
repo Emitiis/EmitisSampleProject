@@ -255,7 +255,13 @@ class MainActivity : AppCompatActivity() {
 
         //Start The MP3 Player - Song
         //Change UI to Pause
-        
+
+        activityMainUiBinding.textViewRipple.setOnClickListener {
+
+
+
+        }
+
     }
 
     override fun onPause() {
