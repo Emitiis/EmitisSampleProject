@@ -17,7 +17,9 @@ class FirestoreAdapter (private val context: AppCompatActivity, firestoreRecycle
     val MyselfLayoutType = 1
     val FriendLayoutType = 2
 
-    override fun getItemCount(): Int {
+    // snapshots -> A Key Word for Firestore Adapter to Get Array Of All Data
+
+    override fun getItemCount() : Int {
 
         return snapshots.size
     }
@@ -25,7 +27,7 @@ class FirestoreAdapter (private val context: AppCompatActivity, firestoreRecycle
     override fun getItemViewType(position: Int): Int /* Return An Integer To Define Types Of Views */ {
         super.getItemViewType(position)
 
-        val firebaseUserId = snapshots[position].userIdInitial
+        val firebaseUserId = snapshots[position].userId
 
         return if (firebaseUserId == Firebase.auth.currentUser!!.uid) {
             //Myself
@@ -59,23 +61,23 @@ class FirestoreAdapter (private val context: AppCompatActivity, firestoreRecycle
 
     override fun onBindViewHolder(genericViewHolder: RecyclerView.ViewHolder, position: Int, messageDataStructure: MessageDataStructure) {
 
-        println("" + messageDataStructure.messageTimeInitial)
+        println("" + messageDataStructure.messageTime)
 
-        val firebaseUserId = messageDataStructure.userIdInitial
+        val firebaseUserId = messageDataStructure.userId
 
         if (firebaseUserId == Firebase.auth.currentUser!!.uid) {
             //Myself
 
             val initialViewHolder = (genericViewHolder as FirestoreViewHolder)
 
-            initialViewHolder.userMessageTextView.text = messageDataStructure.messageContentInitial
+            initialViewHolder.userMessageTextView.text = messageDataStructure.messageContent
 
         } else {
             //Other
 
             val initialViewHolder = (genericViewHolder as FirestoreViewHolderOthers)
 
-            initialViewHolder.userMessageTextView.text = messageDataStructure.messageContentInitial
+            initialViewHolder.userMessageTextView.text = messageDataStructure.messageContent
 
         }
 

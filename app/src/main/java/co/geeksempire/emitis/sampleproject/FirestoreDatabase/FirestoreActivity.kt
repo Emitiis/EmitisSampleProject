@@ -56,6 +56,8 @@ class FirestoreActivity : AppCompatActivity() {
 
                     firestoreLayoutBinding.firestoreText.setText("")
 
+                    firestoreLayoutBinding.messagesRecyclerView.scrollToPosition(firestoreAdapter.itemCount - 1)
+
                 }.addOnFailureListener {
 
                 }

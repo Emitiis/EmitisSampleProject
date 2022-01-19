@@ -5,16 +5,16 @@ import com.google.firebase.Timestamp
 //data class MessageDataStructure(var messageContent: String, var messageTime: Timestamp, var userId: String)
 class MessageDataStructure {
 
-    var messageContentInitial: String? = null
-    var messageTimeInitial: Timestamp? = null
-    var userIdInitial: String? = null
+    var messageContent: String? = null
+    var messageTime: Timestamp? = null
+    var userId: String? = null
 
     constructor() // Empty Constructor Always Needed For Firestore Adapter
 
     constructor (messageContent: String, messageTime: Timestamp, userId: String) {
-        this@MessageDataStructure.messageContentInitial = messageContent
-        this@MessageDataStructure.messageTimeInitial = messageTime
-        this@MessageDataStructure.userIdInitial = userId
+        this@MessageDataStructure.messageContent = messageContent
+        this@MessageDataStructure.messageTime = messageTime
+        this@MessageDataStructure.userId = userId
     }
 
 }
