@@ -9,3 +9,4 @@ dependencyResolutionManagement {
 rootProject.name = "EmitisSampleProject"
 include ':app'
 include ':BlurryEffectLibrary'
+include ':CustomShapes'

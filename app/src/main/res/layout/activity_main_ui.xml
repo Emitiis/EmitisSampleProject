@@ -14,12 +14,20 @@
         android:paddingVertical="7dp"
         android:layout_marginTop="291dp"
 
+        android:textAllCaps="false"
         android:text="Equal"
         android:textColor="@color/teal_200"
         android:textSize="29sp"
+        android:shadowColor="@color/pink"
+        android:shadowRadius="11"
+        android:shadowDx="7"
+        android:shadowDy="5"
+
+        android:elevation="5dp"
 
         apps:cornerRadius="51dp"
         apps:rippleColor="@android:color/holo_blue_bright"
+        apps:backgroundTint="@color/white"
 
         apps:layout_constraintWidth_percent="0.7"
         apps:layout_constraintLeft_toLeftOf="parent"
@@ -34,6 +42,7 @@
         android:paddingVertical="7dp"
         android:layout_marginTop="391dp"
         android:textAllCaps="false"
+        android:elevation="1dp"
 
         android:text="Go To Firestore"
         android:textColor="@color/teal_200"
@@ -60,6 +69,7 @@
         android:paddingVertical="7dp"
         android:layout_marginTop="491dp"
         android:textAllCaps="false"
+        android:elevation="1dp"
 
         android:text="Go To Online Image"
         android:textColor="@color/teal_200"
@@ -83,6 +93,9 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginTop="173dp"
+        android:textColorHighlight="@color/pink"
+
+        android:elevation="7dp"
 
         apps:layout_constraintTop_toTopOf="parent"
         apps:layout_constraintStart_toStartOf="parent"/>
@@ -93,6 +106,7 @@
         android:layout_height="50dp"
         android:text="+"
         android:textSize="23sp"
+        android:elevation="1dp"
 
         apps:cornerRadius="9dp"
         apps:rippleColor="@android:color/holo_blue_bright"
@@ -106,6 +120,7 @@
         android:layout_height="50dp"
         android:text="-"
         android:textSize="23sp"
+        android:elevation="1dp"
 
         apps:layout_constraintBottom_toBottomOf="parent"
         apps:layout_constraintStart_toEndOf="@id/sumOperationButton" />
@@ -116,6 +131,7 @@
         android:layout_height="50dp"
         android:text="*"
         android:textSize="23sp"
+        android:elevation="1dp"
 
         apps:layout_constraintBottom_toBottomOf="parent"
         apps:layout_constraintStart_toEndOf="@id/minusOperationButton" />
@@ -126,6 +142,7 @@
         android:layout_height="50dp"
         android:text="/"
         android:textSize="23sp"
+        android:elevation="1dp"
 
         apps:layout_constraintBottom_toBottomOf="parent"
         apps:layout_constraintStart_toEndOf="@id/multiplyOperationButton" />
@@ -135,6 +152,7 @@
         android:layout_width="100dp"
         android:layout_height="50dp"
         android:layout_marginTop="233dp"
+        android:elevation="1dp"
 
         apps:layout_constraintTop_toTopOf="parent"
         apps:layout_constraintStart_toStartOf="parent"
@@ -147,7 +165,24 @@
         android:textSize="51sp"
         android:textColor="@color/black"
         android:gravity="center"
+        android:elevation="1dp"
 
         apps:layout_constraintTop_toTopOf="parent"/>
+
+    <net.geeksempire.blurry.effect.view.RealtimeBlurView
+        android:layout_width="333dp"
+        android:layout_height="357dp"
+        android:elevation="3dp"
+
+        apps:realtimeBlurRadius="3dp"
+        apps:realtimeBlurTopLeft="51dp"
+        apps:realtimeBlurGradientType="linearTopBottom"
+        apps:realtimeFirstColor="@color/greenTransparent"
+        apps:realtimeSecondColor="@color/pinkTransparent"
+
+        apps:layout_constraintTop_toTopOf="parent"
+        apps:layout_constraintBottom_toBottomOf="parent"
+        apps:layout_constraintStart_toStartOf="parent"
+        apps:layout_constraintEnd_toEndOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
