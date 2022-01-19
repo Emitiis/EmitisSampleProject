@@ -21,8 +21,8 @@ class FirestoreActivity : AppCompatActivity() {
         .collection("/StickerMessenger/Conversations/SauronWithElias")
         .orderBy("messageTime")
 
-    val firestoreRecyclerOptions: FirestoreRecyclerOptions<MessageDataStructure> = FirestoreRecyclerOptions.Builder<MessageDataStructure>()
-        .setQuery(query, MessageDataStructure::class.java)
+    val firestoreRecyclerOptions: FirestoreRecyclerOptions<MessageDataStructure /* Data Class */ > = FirestoreRecyclerOptions.Builder<MessageDataStructure /* Data Class */ >()
+        .setQuery(query, MessageDataStructure::class.java /* Data Class */)
         .build()
 
     val firestoreAdapter = FirestoreAdapter(this@FirestoreActivity, firestoreRecyclerOptions)
